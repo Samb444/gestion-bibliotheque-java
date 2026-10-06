@@ -188,7 +188,7 @@ public class App {
         if (membreId == null) return;
 
         try {
-            List<Emprunt> emprunts = service.findEmpruntsByMembre(membreId);
+            List<Emprunt> emprunts = service.findEmpruntsByMembreTriesParDateRetourPrevue(membreId);
             if (emprunts.isEmpty()) {
                 out.println("\nAucun emprunt trouvé pour le membre n°" + membreId + ".");
             } else {

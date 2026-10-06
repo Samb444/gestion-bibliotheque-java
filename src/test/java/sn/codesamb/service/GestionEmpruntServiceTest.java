@@ -15,6 +15,7 @@ import sn.codesamb.repository.LivreRepository;
 import sn.codesamb.repository.MembreRepository;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -266,6 +267,77 @@ class GestionEmpruntServiceTest {
         assertThrows(IllegalArgumentException.class, () -> service.enregistrerEmprunt(livre1.getId(), membre1.getId(), null));
         assertThrows(IllegalArgumentException.class, () -> service.enregistrerRetour(null));
         assertThrows(IllegalArgumentException.class, () -> service.findEmpruntsByMembre(null));
+        assertThrows(IllegalArgumentException.class, () -> service.findEmpruntsByMembre(1L, null));
+        assertThrows(IllegalArgumentException.class, () -> service.findEmpruntsByMembreTriesParDateRetourPrevue(null));
         assertThrows(IllegalArgumentException.class, () -> service.findEmpruntsEnCoursByMembre(null));
+    }
+
+    @Test
+    @DisplayName("Tri Comparator : les emprunts d'un membre sont ordonnés selon la date de retour prévue")
+    void testTriEmpruntsParDateRetourPrevue() {
+        LocalDate today = LocalDate.now();
+        // Emprunt 1 : échéance dans 20 jours
+        Emprunt e1 = service.enregistrerEmprunt(livre1.getId(), membre1.getId(), today, today.plusDays(20));
+        // Emprunt 2 : échéance dans 5 jours (doit arriver en 1er)
+        Emprunt e2 = service.enregistrerEmprunt(livre2.getId(), membre1.getId(), today, today.plusDays(5));
+        // Emprunt 3 : échéance dans 12 jours (doit arriver en 2ème)
+        Emprunt e3 = service.enregistrerEmprunt(livre3.getId(), membre1.getId(), today, today.plusDays(12));
+
+        List<Emprunt> triees = service.findEmpruntsByMembreTriesParDateRetourPrevue(membre1.getId());
+
+        assertEquals(3, triees.size());
+        assertEquals(e2.getId(), triees.get(0).getId(), "Le 1er doit être celui qui a l'échéance à +5 jours");
+        assertEquals(e3.getId(), triees.get(1).getId(), "Le 2ème doit être celui qui a l'échéance à +12 jours");
+        assertEquals(e1.getId(), triees.get(2).getId(), "Le 3ème doit être celui qui a l'échéance à +20 jours");
+
+        assertTrue(triees.get(0).getDateRetourPrevue().isBefore(triees.get(1).getDateRetourPrevue()));
+        assertTrue(triees.get(1).getDateRetourPrevue().isBefore(triees.get(2).getDateRetourPrevue()));
+    }
+
+    @Test
+    @DisplayName("Tri Comparator : dates de retour prévues identiques gérées correctement")
+    void testTriEmpruntsDatesIdentiques() {
+        LocalDate sameDate = LocalDate.now().plusDays(10);
+        Emprunt e1 = service.enregistrerEmprunt(livre1.getId(), membre1.getId(), LocalDate.now(), sameDate);
+        Emprunt e2 = service.enregistrerEmprunt(livre2.getId(), membre1.getId(), LocalDate.now(), sameDate);
+
+        List<Emprunt> triees = service.findEmpruntsByMembreTriesParDateRetourPrevue(membre1.getId());
+
+        assertEquals(2, triees.size());
+        assertEquals(sameDate, triees.get(0).getDateRetourPrevue());
+        assertEquals(sameDate, triees.get(1).getDateRetourPrevue());
+    }
+
+    @Test
+    @DisplayName("Tri Comparator : membre sans emprunt retourne une liste vide")
+    void testTriEmpruntsMembreSansEmprunt() {
+        List<Emprunt> triees = service.findEmpruntsByMembreTriesParDateRetourPrevue(membre1.getId());
+        assertNotNull(triees);
+        assertTrue(triees.isEmpty());
+    }
+
+    @Test
+    @DisplayName("Tri Comparator : membre inexistant lève BibliothequeException")
+    void testTriEmpruntsMembreInexistant() {
+        BibliothequeException ex = assertThrows(
+                BibliothequeException.class,
+                () -> service.findEmpruntsByMembreTriesParDateRetourPrevue(999L)
+        );
+        assertTrue(ex.getMessage().contains("Membre introuvable"));
+    }
+
+    @Test
+    @DisplayName("Tri Comparator : utilisation d'un comparateur personnalisé (ordre inverse)")
+    void testTriEmpruntsAvecComparateurPersonnalise() {
+        LocalDate today = LocalDate.now();
+        Emprunt e1 = service.enregistrerEmprunt(livre1.getId(), membre1.getId(), today, today.plusDays(10));
+        Emprunt e2 = service.enregistrerEmprunt(livre2.getId(), membre1.getId(), today, today.plusDays(30));
+
+        Comparator<Emprunt> comparateurInverse = Comparator.comparing(Emprunt::getDateRetourPrevue).reversed();
+        List<Emprunt> triees = service.findEmpruntsByMembre(membre1.getId(), comparateurInverse);
+
+        assertEquals(2, triees.size());
+        assertEquals(e2.getId(), triees.get(0).getId(), "L'échéance la plus lointaine doit être première");
+        assertEquals(e1.getId(), triees.get(1).getId());
     }
 }

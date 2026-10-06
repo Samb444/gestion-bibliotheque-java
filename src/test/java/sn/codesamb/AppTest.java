@@ -182,4 +182,26 @@ class AppTest {
         assertTrue(sortie.contains("Format de date invalide. Format attendu : AAAA-MM-JJ"));
         assertTrue(sortie.contains("Emprunt enregistré avec succès"));
     }
+
+    @Test
+    @DisplayName("Action 3 : Lister les emprunts d'un membre triés par date de retour prévue")
+    void testListerEmpruntsMembreTriesParDateRetourPrevue() {
+        // Enregistrer deux nouveaux emprunts pour le membre 2
+        // Livre 2 (échéance +3j), Livre 3 (déjà emprunté dans démo avec échéance +14j), Livre 4 (échéance +25j)
+        service.enregistrerEmprunt(2L, 2L, LocalDate.now(), LocalDate.now().plusDays(3));
+        service.enregistrerEmprunt(4L, 2L, LocalDate.now(), LocalDate.now().plusDays(25));
+
+        String sortie = executerAppAvecEntree("3\n2\n0\n");
+
+        assertTrue(sortie.contains("Emprunts du membre n°2"));
+        int indexLivre2 = sortie.indexOf("Une si longue lettre");
+        int indexLivre3 = sortie.indexOf("Introduction aux algorithmes");
+        int indexLivre4 = sortie.indexOf("Clean Code");
+
+        assertTrue(indexLivre2 != -1, "Livre 2 doit être affiché");
+        assertTrue(indexLivre3 != -1, "Livre 3 doit être affiché");
+        assertTrue(indexLivre4 != -1, "Livre 4 doit être affiché");
+        assertTrue(indexLivre2 < indexLivre3, "L'emprunt à échéance +3j doit être affiché avant celui à +14j");
+        assertTrue(indexLivre3 < indexLivre4, "L'emprunt à échéance +14j doit être affiché avant celui à +25j");
+    }
 }

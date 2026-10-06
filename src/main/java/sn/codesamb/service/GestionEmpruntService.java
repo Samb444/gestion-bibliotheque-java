@@ -11,6 +11,7 @@ import sn.codesamb.repository.LivreRepository;
 import sn.codesamb.repository.MembreRepository;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,6 +25,12 @@ public class GestionEmpruntService {
      * Nombre maximal d'emprunts simultanés autorisés pour un membre.
      */
     public static final int QUOTA_MAX_EMPRUNTS = 3;
+
+    /**
+     * Comparateur pour ordonner les emprunts selon leur date de retour prévue chronologique.
+     */
+    public static final Comparator<Emprunt> COMPARATEUR_DATE_RETOUR_PREVUE =
+            Comparator.comparing(Emprunt::getDateRetourPrevue);
 
     private final LivreRepository livreRepository;
     private final MembreRepository membreRepository;
@@ -181,6 +188,40 @@ public class GestionEmpruntService {
             throw new BibliothequeException("Membre introuvable avec l'identifiant : " + membreId);
         }
         return empruntRepository.findByMembreId(membreId);
+    }
+
+    /**
+     * Récupère tous les emprunts d'un membre triés selon un comparateur fourni.
+     *
+     * @param membreId   l'identifiant du membre
+     * @param comparator le comparateur définissant l'ordre de tri
+     * @return la liste des emprunts triés du membre
+     * @throws BibliothequeException si le membre n'existe pas
+     */
+    public List<Emprunt> findEmpruntsByMembre(Long membreId, Comparator<Emprunt> comparator) {
+        if (membreId == null) {
+            throw new IllegalArgumentException("L'identifiant du membre est obligatoire.");
+        }
+        if (comparator == null) {
+            throw new IllegalArgumentException("Le comparateur est obligatoire.");
+        }
+        if (!membreRepository.existsById(membreId)) {
+            throw new BibliothequeException("Membre introuvable avec l'identifiant : " + membreId);
+        }
+        return empruntRepository.findByMembreId(membreId).stream()
+                .sorted(comparator)
+                .toList();
+    }
+
+    /**
+     * Récupère tous les emprunts d'un membre triés par date de retour prévue (ordre chronologique croissant).
+     *
+     * @param membreId l'identifiant du membre
+     * @return la liste des emprunts triés par date de retour prévue
+     * @throws BibliothequeException si le membre n'existe pas
+     */
+    public List<Emprunt> findEmpruntsByMembreTriesParDateRetourPrevue(Long membreId) {
+        return findEmpruntsByMembre(membreId, COMPARATEUR_DATE_RETOUR_PREVUE);
     }
 
     /**
