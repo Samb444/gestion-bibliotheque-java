@@ -1,0 +1,585 @@
+/* ==========================================================================
+   Variables CSS et Design Tokens
+   ========================================================================== */
+:root {
+  /* Palette de couleurs principales */
+  --color-primary: #1e40af;
+  --color-primary-hover: #1d4ed8;
+  --color-primary-active: #1e3a8a;
+  --color-primary-light: #eff6ff;
+  --color-accent: #3b82f6;
+
+  /* Surfaces et arrière-plans */
+  --color-bg-body: #f8fafc;
+  --color-bg-card: #ffffff;
+  --color-bg-header-start: #0f172a;
+  --color-bg-header-end: #1e3a8a;
+
+  /* Typographie et textes (Conformes WCAG AA) */
+  --color-text-main: #0f172a;
+  --color-text-muted: #475569;
+  --color-text-subtle: #64748b;
+  --color-text-inverse: #ffffff;
+
+  /* Bordures et séparateurs */
+  --color-border: #e2e8f0;
+  --color-border-hover: #cbd5e1;
+  --color-border-focus: #2563eb;
+
+  /* États visuels (Information, Erreur, Neutre) */
+  --color-info-bg: #eff6ff;
+  --color-info-border: #bfdbfe;
+  --color-info-text: #1d4ed8;
+
+  --color-error-bg: #fef2f2;
+  --color-error-border: #fecaca;
+  --color-error-text: #b91c1c;
+
+  --color-empty-bg: #f8fafc;
+  --color-empty-border: #cbd5e1;
+  --color-empty-text: #475569;
+
+  /* Typographie */
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+  --font-size-base: 1rem;
+  --line-height-base: 1.5;
+
+  /* Rayons de bordure */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  /* Ombres portées */
+  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -2px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -4px rgba(15, 23, 42, 0.05);
+
+  /* Mise en page */
+  --max-width-container: 1200px;
+  --transition-fast: 0.2s ease-in-out;
+}
+
+/* ==========================================================================
+   Reset CSS & Styles de Base
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text-main);
+  background-color: var(--color-bg-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   En-tête (Header)
+   ========================================================================== */
+.app-header {
+  background: linear-gradient(135deg, var(--color-bg-header-start) 0%, var(--color-bg-header-end) 100%);
+  color: var(--color-text-inverse);
+  padding: 3rem 1.5rem;
+  box-shadow: var(--shadow-md);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-container {
+  max-width: var(--max-width-container);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.app-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin-bottom: 0.625rem;
+  color: #ffffff;
+}
+
+.app-subtitle {
+  font-size: 1.125rem;
+  color: #bfdbfe;
+  font-weight: 400;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   Contenu Principal (Main)
+   ========================================================================== */
+.app-main {
+  flex: 1;
+  padding: 2.5rem 1.5rem;
+}
+
+.explorer-section {
+  max-width: var(--max-width-container);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.section-header {
+  margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  letter-spacing: -0.015em;
+}
+
+.results-count {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  margin-top: 0.375rem;
+}
+
+/* ==========================================================================
+   Zone de Recherche et Filtres
+   ========================================================================== */
+.controls-container {
+  background-color: var(--color-bg-card);
+  padding: 1.75rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 2rem;
+}
+
+.search-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-end;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.search-group {
+  flex: 2 1 360px;
+}
+
+.filter-group {
+  flex: 1 1 240px;
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.search-input-wrapper {
+  display: flex;
+  gap: 0.625rem;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  min-height: 46px;
+  padding: 0.6875rem 1rem;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text-main);
+  background-color: var(--color-bg-card);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+.form-input::placeholder {
+  color: #94a3b8;
+}
+
+.form-input:hover,
+.form-select:hover {
+  border-color: var(--color-border-hover);
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* Boutons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0.6875rem 1.5rem;
+  font-family: inherit;
+  font-size: 0.975rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active {
+  background-color: var(--color-primary-active);
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Zones d'État Visuel (Loading, Erreur, État vide)
+   ========================================================================== */
+.status-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-lg);
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.loading-box {
+  background-color: var(--color-info-bg);
+  border: 1px solid var(--color-info-border);
+  color: var(--color-info-text);
+}
+
+.error-box {
+  background-color: var(--color-error-bg);
+  border: 1px solid var(--color-error-border);
+  color: var(--color-error-text);
+}
+
+.empty-box {
+  background-color: var(--color-empty-bg);
+  border: 1px dashed var(--color-empty-border);
+  color: var(--color-empty-text);
+}
+
+.loading-spinner {
+  width: 1.35rem;
+  height: 1.35rem;
+  border: 2.5px solid var(--color-info-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+.error-icon,
+.empty-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Grille des Pays
+   ========================================================================== */
+.countries-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  min-height: 250px;
+}
+
+.initial-message {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  background-color: var(--color-bg-card);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   Composant Carte de Pays (Modèle statique Phase 2 & cartes Phase 3)
+   ========================================================================== */
+.country-card {
+  background-color: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.country-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-hover);
+}
+
+.card-flag-container {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  background-color: #f1f5f9;
+  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.card-flag-container img,
+.country-flag {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.flag-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #1e40af 100%);
+  color: #ffffff;
+}
+
+.flag-emblem {
+  font-size: 2.75rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+}
+
+.flag-badge {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.55rem;
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius-sm);
+  color: #ffffff;
+}
+
+.card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.875rem;
+}
+
+.country-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.country-details {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.country-detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  gap: 0.5rem;
+  border-bottom: 1px dashed #f1f5f9;
+  padding-bottom: 0.375rem;
+}
+
+.country-detail-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.detail-value {
+  font-weight: 500;
+  color: var(--color-text-main);
+  text-align: right;
+  word-break: break-word;
+}
+
+/* ==========================================================================
+   Pied de Page (Footer)
+   ========================================================================== */
+.app-footer {
+  background-color: #ffffff;
+  border-top: 1px solid var(--color-border);
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  color: var(--color-text-subtle);
+  font-size: 0.875rem;
+}
+
+.footer-container {
+  max-width: var(--max-width-container);
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   Responsive Design (Media Queries)
+   ========================================================================== */
+
+/* Tablette (<= 1024px) : 2 colonnes */
+@media (max-width: 1024px) {
+  .countries-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .app-header {
+    padding: 2.25rem 1.25rem;
+  }
+
+  .app-title {
+    font-size: 2.125rem;
+  }
+
+  .app-subtitle {
+    font-size: 1.05rem;
+  }
+
+  .app-main {
+    padding: 2rem 1.25rem;
+  }
+
+  .controls-container {
+    padding: 1.5rem;
+  }
+}
+
+/* Mobile (<= 640px) : 1 colonne */
+@media (max-width: 640px) {
+  .app-header {
+    padding: 1.75rem 1rem;
+  }
+
+  .app-title {
+    font-size: 1.75rem;
+  }
+
+  .app-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .app-main {
+    padding: 1.25rem 1rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.375rem;
+  }
+
+  .controls-container {
+    padding: 1.125rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .search-form {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .search-group,
+  .filter-group {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .search-input-wrapper {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .countries-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .card-flag-container {
+    height: 150px;
+  }
+}
