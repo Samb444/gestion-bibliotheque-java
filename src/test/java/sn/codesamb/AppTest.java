@@ -55,7 +55,7 @@ class AppTest {
         assertTrue(sortie.contains("2. Enregistrer un retour"));
         assertTrue(sortie.contains("3. Lister les emprunts d'un membre"));
         assertTrue(sortie.contains("4. Lister les livres en retard"));
-        assertTrue(sortie.contains("5. Quitter"));
+        assertTrue(sortie.contains("0. Quitter"));
         assertTrue(sortie.contains("Au revoir !"));
     }
 

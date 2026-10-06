@@ -120,7 +120,7 @@ public class App {
         out.println("2. Enregistrer un retour");
         out.println("3. Lister les emprunts d'un membre");
         out.println("4. Lister les livres en retard");
-        out.println("5. Quitter");
+        out.println("0. Quitter");
         out.println("=================================");
     }
 
