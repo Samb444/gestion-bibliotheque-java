@@ -167,4 +167,258 @@
       </root>
     </mxGraphModel>
   </diagram>
+  <diagram id="diag-class-gym" name="Diagramme de Classes - Salle de Sport">
+    <mxGraphModel dx="1280" dy="860" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1360" pageHeight="860" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ========================================== -->
+        <!-- EN-TETE DU DIAGRAMME                       -->
+        <!-- ========================================== -->
+        <mxCell id="class-diag-title" value="&lt;b style=&quot;font-size: 15px;&quot;&gt;DIAGRAMME DE CLASSES UML — SYSTÈME DE GESTION DE SALLE DE SPORT&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 11px; color: #64748B;&quot;&gt;Modélisation orientée objet du domaine métier — Relations d&#39;association, cardinalités et dépendances&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="60" y="30" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- CLASSE 1 : ADHÉRENT (GAUCHE)               -->
+        <!-- ========================================== -->
+        <mxCell id="class-adherent" value="Adherent" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=3;fillColor=#EFF6FF;strokeColor=#2563EB;strokeWidth=1.5;fontFamily=Helvetica;fontSize=13;fontColor=#1E3A8A;" vertex="1" parent="1">
+          <mxGeometry x="60" y="300" width="230" height="215" as="geometry" />
+        </mxCell>
+        <mxCell id="class-adherent-attrs" value="- id : Long&lt;br&gt;- nom : String&lt;br&gt;- prenom : String&lt;br&gt;- email : String&lt;br&gt;- telephone : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;spacingTop=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="class-adherent">
+          <mxGeometry y="26" width="230" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="class-adherent-sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#2563EB;" vertex="1" parent="class-adherent">
+          <mxGeometry y="111" width="230" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="class-adherent-methods" value="+ consulterCours()&lt;br&gt;+ sInscrire(cours : Cours)&lt;br&gt;+ consulterInscriptions()&lt;br&gt;+ consulterAbonnement()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;spacingTop=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="class-adherent">
+          <mxGeometry y="119" width="230" height="96" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- CLASSE 2 : COACH (HAUT)                    -->
+        <!-- ========================================== -->
+        <mxCell id="class-coach" value="Coach" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=3;fillColor=#F0FDF4;strokeColor=#16A34A;strokeWidth=1.5;fontFamily=Helvetica;fontSize=13;fontColor=#14532D;" vertex="1" parent="1">
+          <mxGeometry x="670" y="60" width="240" height="165" as="geometry" />
+        </mxCell>
+        <mxCell id="class-coach-attrs" value="- id : Long&lt;br&gt;- nom : String&lt;br&gt;- prenom : String&lt;br&gt;- specialite : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;spacingTop=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="class-coach">
+          <mxGeometry y="26" width="240" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="class-coach-sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#16A34A;" vertex="1" parent="class-coach">
+          <mxGeometry y="101" width="240" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="class-coach-methods" value="+ consulterCours()&lt;br&gt;+ consulterAdherentsInscrits()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;spacingTop=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="class-coach">
+          <mxGeometry y="109" width="240" height="56" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- CLASSE 3 : COURS (CENTRE)                  -->
+        <!-- ========================================== -->
+        <mxCell id="class-cours" value="Cours" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=3;fillColor=#EEF2FF;strokeColor=#4F46E5;strokeWidth=1.5;fontFamily=Helvetica;fontSize=13;fontColor=#312E81;" vertex="1" parent="1">
+          <mxGeometry x="670" y="305" width="240" height="205" as="geometry" />
+        </mxCell>
+        <mxCell id="class-cours-attrs" value="- id : Long&lt;br&gt;- nom : String&lt;br&gt;- date : Date&lt;br&gt;- heure : String&lt;br&gt;- capaciteMax : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;spacingTop=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="class-cours">
+          <mxGeometry y="26" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="class-cours-sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#4F46E5;" vertex="1" parent="class-cours">
+          <mxGeometry y="126" width="240" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="class-cours-methods" value="+ verifierCapacite() : boolean&lt;br&gt;+ ajouterInscription(inscription : Inscription)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;spacingTop=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="class-cours">
+          <mxGeometry y="134" width="240" height="71" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- CLASSE 4 : INSCRIPTION (CENTRE-GAUCHE)     -->
+        <!-- ========================================== -->
+        <mxCell id="class-inscription" value="Inscription" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=3;fillColor=#FAF5FF;strokeColor=#9333EA;strokeWidth=1.5;fontFamily=Helvetica;fontSize=13;fontColor=#581C87;" vertex="1" parent="1">
+          <mxGeometry x="370" y="330" width="210" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="class-inscription-attrs" value="- id : Long&lt;br&gt;- dateInscription : Date&lt;br&gt;- statut : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;spacingTop=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="class-inscription">
+          <mxGeometry y="26" width="210" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="class-inscription-sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#9333EA;" vertex="1" parent="class-inscription">
+          <mxGeometry y="91" width="210" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="class-inscription-methods" value="+ enregistrer()&lt;br&gt;+ annuler()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;spacingTop=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="class-inscription">
+          <mxGeometry y="99" width="210" height="56" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- CLASSE 5 : ABONNEMENT (BAS-GAUCHE)         -->
+        <!-- ========================================== -->
+        <mxCell id="class-abonnement" value="Abonnement" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=3;fillColor=#F0FDFA;strokeColor=#0D9488;strokeWidth=1.5;fontFamily=Helvetica;fontSize=13;fontColor=#115E59;" vertex="1" parent="1">
+          <mxGeometry x="60" y="595" width="230" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="class-abonnement-attrs" value="- id : Long&lt;br&gt;- type : String&lt;br&gt;- dateDebut : Date&lt;br&gt;- dateFin : Date&lt;br&gt;- statut : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;spacingTop=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="class-abonnement">
+          <mxGeometry y="26" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="class-abonnement-sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#0D9488;" vertex="1" parent="class-abonnement">
+          <mxGeometry y="116" width="230" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="class-abonnement-methods" value="+ estValide() : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;spacingTop=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="class-abonnement">
+          <mxGeometry y="124" width="230" height="51" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- CLASSE 6 : ADMINISTRATEUR (DROITE)         -->
+        <!-- ========================================== -->
+        <mxCell id="class-administrateur" value="Administrateur" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=3;fillColor=#F8FAFC;strokeColor=#475569;strokeWidth=1.5;fontFamily=Helvetica;fontSize=13;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="315" width="230" height="185" as="geometry" />
+        </mxCell>
+        <mxCell id="class-administrateur-attrs" value="- id : Long&lt;br&gt;- nom : String&lt;br&gt;- prenom : String&lt;br&gt;- email : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;spacingTop=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="class-administrateur">
+          <mxGeometry y="26" width="230" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="class-administrateur-sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#475569;" vertex="1" parent="class-administrateur">
+          <mxGeometry y="101" width="230" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="class-administrateur-methods" value="+ gererAdherents()&lt;br&gt;+ gererCoach()&lt;br&gt;+ gererCours()&lt;br&gt;+ gererAbonnements()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;spacingRight=4;spacingTop=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="class-administrateur">
+          <mxGeometry y="109" width="230" height="76" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- ASSOCIATIONS ET CARDINALITÉS               -->
+        <!-- ========================================== -->
+
+        <!-- Association 1 : Adherent "1" —— "0..*" Inscription -->
+        <mxCell id="assoc-adh-insc" style="endArrow=none;html=1;rounded=0;strokeColor=#2563EB;strokeWidth=1.5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="class-adherent" target="class-inscription">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="card-adh-insc-src" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontStyle=1;fontColor=#1E3A8A;" vertex="1" connectable="0" parent="assoc-adh-insc">
+          <mxGeometry x="-0.75" relative="1" as="geometry">
+            <mxPoint y="-14" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="card-adh-insc-tgt" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontStyle=1;fontColor=#1E3A8A;" vertex="1" connectable="0" parent="assoc-adh-insc">
+          <mxGeometry x="0.75" relative="1" as="geometry">
+            <mxPoint y="-14" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl-adh-insc" value="effectue" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=2;fontColor=#64748B;" vertex="1" connectable="0" parent="assoc-adh-insc">
+          <mxGeometry x="0" relative="1" as="geometry">
+            <mxPoint y="14" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Association 2 : Cours "1" —— "0..*" Inscription -->
+        <mxCell id="assoc-cours-insc" style="endArrow=none;html=1;rounded=0;strokeColor=#4F46E5;strokeWidth=1.5;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="class-cours" target="class-inscription">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="card-cours-insc-src" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontStyle=1;fontColor=#312E81;" vertex="1" connectable="0" parent="assoc-cours-insc">
+          <mxGeometry x="-0.75" relative="1" as="geometry">
+            <mxPoint y="-14" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="card-cours-insc-tgt" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontStyle=1;fontColor=#312E81;" vertex="1" connectable="0" parent="assoc-cours-insc">
+          <mxGeometry x="0.75" relative="1" as="geometry">
+            <mxPoint y="-14" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl-cours-insc" value="concerne" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=2;fontColor=#64748B;" vertex="1" connectable="0" parent="assoc-cours-insc">
+          <mxGeometry x="0" relative="1" as="geometry">
+            <mxPoint y="14" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Association 3 : Coach "1" —— "0..*" Cours -->
+        <mxCell id="assoc-coach-cours" style="endArrow=none;html=1;rounded=0;strokeColor=#16A34A;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="class-coach" target="class-cours">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="card-coach-cours-src" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontStyle=1;fontColor=#14532D;" vertex="1" connectable="0" parent="assoc-coach-cours">
+          <mxGeometry x="-0.7" relative="1" as="geometry">
+            <mxPoint x="-16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="card-coach-cours-tgt" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontStyle=1;fontColor=#14532D;" vertex="1" connectable="0" parent="assoc-coach-cours">
+          <mxGeometry x="0.7" relative="1" as="geometry">
+            <mxPoint x="-18" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl-coach-cours" value="encadre" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=2;fontColor=#64748B;" vertex="1" connectable="0" parent="assoc-coach-cours">
+          <mxGeometry x="0" relative="1" as="geometry">
+            <mxPoint x="28" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Association 4 : Adherent "1" —— "0..*" Abonnement -->
+        <mxCell id="assoc-adh-abonn" style="endArrow=none;html=1;rounded=0;strokeColor=#0D9488;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="class-adherent" target="class-abonnement">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="card-adh-abonn-src" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontStyle=1;fontColor=#115E59;" vertex="1" connectable="0" parent="assoc-adh-abonn">
+          <mxGeometry x="-0.7" relative="1" as="geometry">
+            <mxPoint x="-16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="card-adh-abonn-tgt" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontStyle=1;fontColor=#115E59;" vertex="1" connectable="0" parent="assoc-adh-abonn">
+          <mxGeometry x="0.7" relative="1" as="geometry">
+            <mxPoint x="-18" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl-adh-abonn" value="souscrit" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=2;fontColor=#64748B;" vertex="1" connectable="0" parent="assoc-adh-abonn">
+          <mxGeometry x="0" relative="1" as="geometry">
+            <mxPoint x="28" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- RELATIONS DE GESTION (ADMINISTRATEUR)      -->
+        <!-- Dépendances UML <<gère>> (sans possession) -->
+        <!-- ========================================== -->
+
+        <!-- Administrateur ..> Cours -->
+        <mxCell id="dep-admin-cours" value="&amp;lt;&amp;lt;gère&amp;gt;&amp;gt;" style="endArrow=open;endSize=8;dashed=1;html=1;rounded=0;strokeColor=#475569;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#334155;align=center;verticalAlign=bottom;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="class-administrateur" target="class-cours">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Administrateur ..> Coach -->
+        <mxCell id="dep-admin-coach" value="&amp;lt;&amp;lt;gère&amp;gt;&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=8;dashed=1;html=1;rounded=0;strokeColor=#475569;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#334155;align=center;verticalAlign=bottom;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="class-administrateur" target="class-coach">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1125" y="142" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Administrateur ..> Adherent -->
+        <mxCell id="dep-admin-adherent" value="&amp;lt;&amp;lt;gère&amp;gt;&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=8;dashed=1;html=1;rounded=0;strokeColor=#475569;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#334155;align=center;verticalAlign=bottom;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.85;entryDx=0;entryDy=0;" edge="1" parent="1" source="class-administrateur" target="class-adherent">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1068" y="555" />
+              <mxPoint x="290" y="555" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Administrateur ..> Abonnement -->
+        <mxCell id="dep-admin-abonnement" value="&amp;lt;&amp;lt;gère&amp;gt;&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=8;dashed=1;html=1;rounded=0;strokeColor=#475569;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#334155;align=center;verticalAlign=bottom;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="class-administrateur" target="class-abonnement">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1182" y="682" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- NOTES PÉDAGOGIQUES UML                     -->
+        <!-- ========================================== -->
+
+        <!-- Note 1 : Entité d'association Inscription -->
+        <mxCell id="note-assoc-insc" value="&lt;b&gt;Classe Associative Métier :&lt;/b&gt;&lt;br&gt;Résout la relation Many-to-Many&lt;br&gt;entre Adherent et Cours avec des&lt;br&gt;propriétés propres (date, statut)." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontFamily=Helvetica;fontSize=11;fillColor=#FEF9C3;strokeColor=#CA8A04;fontColor=#713F12;size=14;align=left;spacingLeft=5;" vertex="1" parent="1">
+          <mxGeometry x="360" y="160" width="220" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-note-assoc-insc" style="endArrow=none;dashed=1;html=1;rounded=0;strokeColor=#CA8A04;strokeWidth=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="note-assoc-insc" target="class-inscription">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Note 2 : Rôle Administrateur sans possession -->
+        <mxCell id="note-admin-role" value="&lt;b&gt;Règle de modélisation Administrateur :&lt;/b&gt;&lt;br&gt;Dépendances de service (&amp;laquo;gère&amp;raquo;) :&lt;br&gt;&amp;bull; Opérations de gestion du système&lt;br&gt;&amp;bull; Pas de relation de possession/agrégation&lt;br&gt;&amp;bull; Pas de cardinalités artificielles (ex: 1..*)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontFamily=Helvetica;fontSize=11;fillColor=#FEF9C3;strokeColor=#CA8A04;fontColor=#713F12;size=14;align=left;spacingLeft=5;" vertex="1" parent="1">
+          <mxGeometry x="990" y="590" width="270" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="rel-note-admin-role" style="endArrow=none;dashed=1;html=1;rounded=0;strokeColor=#CA8A04;strokeWidth=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="note-admin-role" target="class-administrateur">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
 </mxfile>
