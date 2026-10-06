@@ -1,0 +1,170 @@
+<mxfile host="Electron" modified="2026-10-06T13:10:00.000Z" agent="Antigravity UML" version="21.0.0" type="device">
+  <diagram id="diag-usecase-gym" name="Diagramme de Cas d'Utilisation - Salle de Sport">
+    <mxGraphModel dx="1280" dy="860" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1280" pageHeight="860" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ========================================== -->
+        <!-- FRONTIERE DU SYSTEME (SYSTEM BOUNDARY)      -->
+        <!-- ========================================== -->
+        <mxCell id="sys-boundary" value="Système de gestion de salle de sport" style="shape=swimlane;whiteSpace=wrap;html=1;startSize=35;fontFamily=Helvetica;fontSize=14;fontStyle=1;align=center;horizontal=1;swimlaneFillColor=#FFFFFF;fillColor=#F8FAFC;fontColor=#1E293B;strokeColor=#64748B;strokeWidth=2;rounded=1;arcSize=2;" vertex="1" parent="1">
+          <mxGeometry x="260" y="40" width="740" height="760" as="geometry" />
+        </mxCell>
+
+        <!-- Titre / En-tête pédagogique -->
+        <mxCell id="diag-title" value="&lt;b&gt;DIAGRAMME DE CAS D&#39;UTILISATION&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 11px; font-weight: normal; color: #64748b;&quot;&gt;Gestion de Salle de Sport — Niveau Licence Informatique&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=13;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="280" y="50" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- ACTEURS EXTERNES                           -->
+        <!-- ========================================== -->
+        <!-- Acteur 1 : Adhérent (Gauche) -->
+        <mxCell id="actor-adherent" value="Adhérent" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontFamily=Helvetica;fontSize=13;fontStyle=1;fillColor=#DBEAFE;strokeColor=#2563EB;strokeWidth=2;fontColor=#1E3A8A;" vertex="1" parent="1">
+          <mxGeometry x="80" y="270" width="60" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Acteur 2 : Coach (Droite Haut) -->
+        <mxCell id="actor-coach" value="Coach" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontFamily=Helvetica;fontSize=13;fontStyle=1;fillColor=#DCFCE7;strokeColor=#16A34A;strokeWidth=2;fontColor=#14532D;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="110" width="60" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Acteur 3 : Administrateur (Droite Bas) -->
+        <mxCell id="actor-admin" value="Administrateur" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontFamily=Helvetica;fontSize=13;fontStyle=1;fillColor=#F1F5F9;strokeColor=#475569;strokeWidth=2;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="510" width="60" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- CAS D'UTILISATION : ADHÉRENT               -->
+        <!-- ========================================== -->
+        <mxCell id="uc-adh-consulter-cours" value="Consulter les cours" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontStyle=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fontColor=#1E3A8A;" vertex="1" parent="1">
+          <mxGeometry x="290" y="100" width="190" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc-adh-inscrire" value="S&#39;inscrire à un cours" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontStyle=1;fillColor=#EFF6FF;strokeColor=#2563EB;strokeWidth=2;fontColor=#1E3A8A;" vertex="1" parent="1">
+          <mxGeometry x="290" y="200" width="190" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc-adh-consulter-inscriptions" value="Consulter ses inscriptions" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontStyle=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fontColor=#1E3A8A;" vertex="1" parent="1">
+          <mxGeometry x="290" y="325" width="190" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc-adh-consulter-abonnement" value="Consulter son abonnement" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontStyle=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fontColor=#1E3A8A;" vertex="1" parent="1">
+          <mxGeometry x="290" y="425" width="190" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- LOGIQUE MÉTIER INSCRIPTION (INCLUDE)       -->
+        <!-- ========================================== -->
+        <!-- Sous-cas inclus obligatoire -->
+        <mxCell id="uc-verifier-capacite" value="Vérifier la capacité disponible" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontStyle=1;fillColor=#F3E8FF;strokeColor=#9333EA;strokeWidth=1.5;fontColor=#581C87;" vertex="1" parent="1">
+          <mxGeometry x="525" y="150" width="195" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Note explicative UML pour l'inscription -->
+        <mxCell id="note-inscription" value="&lt;b&gt;Règle métier :&lt;/b&gt;&lt;br&gt;[Si le cours est complet → inscription refusée]&lt;br&gt;[Sinon → inscription enregistrée]" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontFamily=Helvetica;fontSize=11;fillColor=#FEF9C3;strokeColor=#CA8A04;fontColor=#713F12;size=14;align=left;spacingLeft=5;" vertex="1" parent="1">
+          <mxGeometry x="525" y="240" width="245" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- CAS D'UTILISATION : COACH                  -->
+        <!-- ========================================== -->
+        <mxCell id="uc-coach-consulter-cours" value="Consulter ses cours" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontStyle=1;fillColor=#F0FDF4;strokeColor=#22C55E;strokeWidth=1.5;fontColor=#14532D;" vertex="1" parent="1">
+          <mxGeometry x="760" y="95" width="205" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc-coach-consulter-adherents" value="Consulter les adhérents inscrits" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontStyle=1;fillColor=#F0FDF4;strokeColor=#22C55E;strokeWidth=1.5;fontColor=#14532D;" vertex="1" parent="1">
+          <mxGeometry x="760" y="185" width="205" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- CAS D'UTILISATION : ADMINISTRATEUR         -->
+        <!-- ========================================== -->
+        <mxCell id="uc-admin-gerer-adherents" value="Gérer les adhérents" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontStyle=1;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=1.5;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="760" y="370" width="205" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc-admin-gerer-coachs" value="Gérer les coachs" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontStyle=1;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=1.5;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="760" y="450" width="205" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc-admin-gerer-cours" value="Gérer les cours" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontStyle=1;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=1.5;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="760" y="530" width="205" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc-admin-gerer-abonnements" value="Gérer les abonnements" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontStyle=1;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=1.5;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="760" y="610" width="205" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc-admin-consulter-inscriptions" value="Consulter les inscriptions" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontStyle=1;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=1.5;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="760" y="690" width="205" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- ASSOCIATIONS : ACTEUR <-> CAS D'UTILISATION -->
+        <!-- ========================================== -->
+        <!-- Associations Adhérent -->
+        <mxCell id="assoc-adh-cours" style="endArrow=none;html=1;rounded=0;strokeColor=#2563EB;strokeWidth=1.5;" edge="1" parent="1" source="actor-adherent" target="uc-adh-consulter-cours">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="assoc-adh-inscrire" style="endArrow=none;html=1;rounded=0;strokeColor=#2563EB;strokeWidth=2;" edge="1" parent="1" source="actor-adherent" target="uc-adh-inscrire">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="assoc-adh-inscriptions" style="endArrow=none;html=1;rounded=0;strokeColor=#2563EB;strokeWidth=1.5;" edge="1" parent="1" source="actor-adherent" target="uc-adh-consulter-inscriptions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="assoc-adh-abonnement" style="endArrow=none;html=1;rounded=0;strokeColor=#2563EB;strokeWidth=1.5;" edge="1" parent="1" source="actor-adherent" target="uc-adh-consulter-abonnement">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Associations Coach -->
+        <mxCell id="assoc-coach-cours" style="endArrow=none;html=1;rounded=0;strokeColor=#16A34A;strokeWidth=1.5;" edge="1" parent="1" source="actor-coach" target="uc-coach-consulter-cours">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="assoc-coach-adherents" style="endArrow=none;html=1;rounded=0;strokeColor=#16A34A;strokeWidth=1.5;" edge="1" parent="1" source="actor-coach" target="uc-coach-consulter-adherents">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Associations Administrateur -->
+        <mxCell id="assoc-admin-adherents" style="endArrow=none;html=1;rounded=0;strokeColor=#475569;strokeWidth=1.5;" edge="1" parent="1" source="actor-admin" target="uc-admin-gerer-adherents">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="assoc-admin-coachs" style="endArrow=none;html=1;rounded=0;strokeColor=#475569;strokeWidth=1.5;" edge="1" parent="1" source="actor-admin" target="uc-admin-gerer-coachs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="assoc-admin-cours" style="endArrow=none;html=1;rounded=0;strokeColor=#475569;strokeWidth=1.5;" edge="1" parent="1" source="actor-admin" target="uc-admin-gerer-cours">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="assoc-admin-abonnements" style="endArrow=none;html=1;rounded=0;strokeColor=#475569;strokeWidth=1.5;" edge="1" parent="1" source="actor-admin" target="uc-admin-gerer-abonnements">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="assoc-admin-inscriptions" style="endArrow=none;html=1;rounded=0;strokeColor=#475569;strokeWidth=1.5;" edge="1" parent="1" source="actor-admin" target="uc-admin-consulter-inscriptions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================== -->
+        <!-- RELATIONS UML INTERNES (INCLUDE)           -->
+        <!-- ========================================== -->
+        <!-- <<include>> : S'inscrire inclut obligatoirement Vérifier capacité -->
+        <mxCell id="rel-include-capacite" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="endArrow=open;endSize=10;dashed=1;html=1;rounded=0;strokeColor=#9333EA;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontStyle=1;fontColor=#581C87;align=center;verticalAlign=bottom;" edge="1" parent="1" source="uc-adh-inscrire" target="uc-verifier-capacite">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Lien note UML vers cas S'inscrire -->
+        <mxCell id="rel-note-inscription" style="endArrow=none;dashed=1;html=1;rounded=0;strokeColor=#CA8A04;strokeWidth=1;" edge="1" parent="1" source="note-inscription" target="uc-adh-inscrire">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
