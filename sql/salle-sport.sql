@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS COURS (
 -- =====================================================================
 -- 5. TABLE : INSCRIPTION
 -- =====================================================================
--- Représente la participation d'un adhérent à un cours spécifique.
+-- Représente la réservation d'un adhérent à un cours spécifique.
 -- Dépendances : liée à ADHERENT et COURS.
 -- Contrainte : un adhérent ne peut s'inscrire qu'une seule fois au même cours.
 CREATE TABLE IF NOT EXISTS INSCRIPTION (
@@ -105,6 +105,47 @@ CREATE TABLE IF NOT EXISTS ABONNEMENT (
     CONSTRAINT chk_abonnement_dates CHECK (date_fin >= date_debut),
     CONSTRAINT fk_abonnement_adherent FOREIGN KEY (id_adherent)
         REFERENCES ADHERENT (id_adherent)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+-- =====================================================================
+-- 7. TABLE : PAIEMENT
+-- =====================================================================
+-- Représente les règlements financiers associés aux abonnements.
+-- Dépendance : lié à l'abonnement souscrit (intégrité financière).
+-- Contraintes : montant strictement positif (> 0).
+CREATE TABLE IF NOT EXISTS PAIEMENT (
+    id_paiement INT AUTO_INCREMENT,
+    montant DECIMAL(10, 2) NOT NULL,
+    date_paiement DATE NOT NULL,
+    mode_paiement VARCHAR(50) NOT NULL,
+    statut VARCHAR(50) NOT NULL,
+    id_abonnement INT NOT NULL,
+    CONSTRAINT pk_paiement PRIMARY KEY (id_paiement),
+    CONSTRAINT chk_paiement_montant CHECK (montant > 0),
+    CONSTRAINT fk_paiement_abonnement FOREIGN KEY (id_abonnement)
+        REFERENCES ABONNEMENT (id_abonnement)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+-- =====================================================================
+-- 8. TABLE : PRESENCE
+-- =====================================================================
+-- Représente le pointage d'assiduité effectif lors d'une séance.
+-- Dépendance : lié à l'inscription préalable (séparation réservation / présence).
+-- Contraintes : unicité du pointage par inscription, statut PRESENT ou ABSENT.
+CREATE TABLE IF NOT EXISTS PRESENCE (
+    id_presence INT AUTO_INCREMENT,
+    date_presence DATE NOT NULL,
+    statut_presence VARCHAR(20) NOT NULL,
+    id_inscription INT NOT NULL,
+    CONSTRAINT pk_presence PRIMARY KEY (id_presence),
+    CONSTRAINT uk_presence_inscription UNIQUE (id_inscription),
+    CONSTRAINT chk_presence_statut CHECK (statut_presence IN ('PRESENT', 'ABSENT')),
+    CONSTRAINT fk_presence_inscription FOREIGN KEY (id_inscription)
+        REFERENCES INSCRIPTION (id_inscription)
         ON DELETE RESTRICT
         ON UPDATE CASCADE
 ) ENGINE=InnoDB;

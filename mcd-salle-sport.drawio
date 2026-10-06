@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2026-10-06T13:55:00.000Z" agent="Antigravity MCD" version="21.0.0" type="device">
+<mxfile host="Electron" modified="2026-10-06T15:20:00.000Z" agent="Antigravity MCD" version="21.0.0" type="device">
   <diagram id="diag-mcd-salle-sport" name="MCD - Salle de Sport">
-    <mxGraphModel dx="1400" dy="1500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1440" pageHeight="1520" background="#FFFFFF" math="0" shadow="0">
+    <mxGraphModel dx="1600" dy="1800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1560" pageHeight="1850" background="#FFFFFF" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -9,13 +9,13 @@
         <!-- EN-TETE PRINCIPAL DU MCD                                 -->
         <!-- ======================================================== -->
         <mxCell id="mcd-header" value="" style="rounded=1;arcSize=2;fillColor=#0F172A;strokeColor=#1E293B;strokeWidth=1;html=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="20" width="1360" height="70" as="geometry" />
+          <mxGeometry x="40" y="20" width="1480" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="mcd-title" value="&lt;b style=&quot;font-size: 16px; color: #FFFFFF;&quot;&gt;MODÈLE CONCEPTUEL DE DONNÉES (MCD) — SYSTÈME DE GESTION DE SALLE DE SPORT&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 11px; color: #94A3B8;&quot;&gt;Exercice 3 : Conception de Base de Données — Formalisme Merise (Entités, Attributs, Identifiants PK, Associations &amp;amp; Cardinalités)&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontColor=#FFFFFF;" vertex="1" parent="1">
-          <mxGeometry x="60" y="27" width="900" height="55" as="geometry" />
+        <mxCell id="mcd-title" value="&lt;b style=&quot;font-size: 16px; color: #FFFFFF;&quot;&gt;MODÈLE CONCEPTUEL DE DONNÉES (MCD) — SYSTÈME DE GESTION DE SALLE DE SPORT&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 11px; color: #94A3B8;&quot;&gt;Exercice 3 : Conception de Base de Données — Formalisme Merise (Entités Métier, Identifiants PK, Associations, Cardinalités, Présences et Paiements)&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="60" y="27" width="1020" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="mcd-badge-status" value="&lt;b&gt;PHASE 1 — MCD VALIDÉ&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;5 Entités Métier | 4 Associations&lt;/font&gt;" style="rounded=1;arcSize=10;fillColor=#1E293B;strokeColor=#38BDF8;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#38BDF8;align=center;verticalAlign=middle;html=1;" vertex="1" parent="1">
-          <mxGeometry x="1150" y="32" width="230" height="45" as="geometry" />
+        <mxCell id="mcd-badge-status" value="&lt;b&gt;PHASE 1 (RÉVISÉE) — MCD VALIDÉ&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;7 Entités Métier | 6 Associations&lt;/font&gt;" style="rounded=1;arcSize=10;fillColor=#1E293B;strokeColor=#38BDF8;strokeWidth=1.5;fontFamily=Helvetica;fontSize=11;fontColor=#38BDF8;align=center;verticalAlign=middle;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1270" y="32" width="230" height="45" as="geometry" />
         </mxCell>
 
         <!-- ======================================================== -->
@@ -24,167 +24,205 @@
 
         <!-- Carte 1 : Cadre conceptuel Merise -->
         <mxCell id="card-methodo" value="&lt;b&gt;1. DÉMARCHE CONCEPTUELLE MERISE&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=3;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#0F172A;" vertex="1" parent="1">
-          <mxGeometry x="40" y="110" width="480" height="340" as="geometry" />
+          <mxGeometry x="40" y="110" width="480" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="card-methodo-content" value="&lt;b style=&quot;color:#0F172A;&quot;&gt;Principes fondamentaux appliqués :&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;b&gt;Niveau Conceptuel Pur (MCD)&lt;/b&gt; : Modélisation sémantique indépendante de tout SGBD. Aucune syntaxe SQL (&lt;i&gt;CREATE TABLE, VARCHAR, INT&lt;/i&gt;) ni contrainte d&#39;implémentation physique.&lt;br&gt;&lt;br&gt;• &lt;b&gt;Entités Métier (Rectangles)&lt;/b&gt; : 5 entités identifiées, chacune dotée d&#39;attributs atomiques représentatifs du domaine et d&#39;un identifiant unique (&lt;b&gt;PK&lt;/b&gt;) souligné.&lt;br&gt;&lt;br&gt;• &lt;b&gt;Associations Sémantiques (Capsules)&lt;/b&gt; : Les liens métier sont portés par des verbes d&#39;action (&lt;i&gt;ENCADRER, CONCERNER, EFFECTUER, SOUSCRIRE&lt;/i&gt;).&lt;br&gt;&lt;br&gt;• &lt;b&gt;Séparation stricte MCD → MLD&lt;/b&gt; : Aucune clé étrangère (FK) n&#39;est présente dans les entités du MCD (retrait strict de &lt;i&gt;id_coach, id_adherent, id_cours&lt;/i&gt;). Les associations et cardinalités portent seules les liaisons. Les clés étrangères apparaîtront exclusivement en Phase 2 (&lt;b&gt;MLD&lt;/b&gt;).&lt;br&gt;&lt;br&gt;• &lt;b&gt;Exclusion de l&#39;Administrateur&lt;/b&gt; : L&#39;administrateur est un acteur externe de gestion applicative (cf. UML Exercice 2) et n&#39;est pas une entité de stockage métier." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;overflow=hidden;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#334155;" vertex="1" parent="card-methodo">
-          <mxGeometry y="28" width="480" height="312" as="geometry" />
+        <mxCell id="card-methodo-content" value="&lt;b style=&quot;color:#0F172A;&quot;&gt;Principes fondamentaux appliqués :&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;b&gt;Niveau Conceptuel Pur (MCD)&lt;/b&gt; : Modélisation sémantique indépendante de tout SGBD. Aucune syntaxe SQL (&lt;i&gt;CREATE TABLE, VARCHAR, INT&lt;/i&gt;) ni contrainte physique.&lt;br&gt;&lt;br&gt;• &lt;b&gt;Entités Métier (Rectangles)&lt;/b&gt; : 7 entités identifiées, chacune dotée d&#39;attributs atomiques représentatifs du domaine et d&#39;un identifiant unique (&lt;b&gt;PK&lt;/b&gt;) souligné.&lt;br&gt;&lt;br&gt;• &lt;b&gt;Associations Sémantiques (Capsules)&lt;/b&gt; : Les liens métier sont portés par des verbes d&#39;action (&lt;i&gt;ENCADRER, CONCERNER, EFFECTUER, SOUSCRIRE, REGLER, EMARGER&lt;/i&gt;).&lt;br&gt;&lt;br&gt;• &lt;b&gt;Séparation stricte MCD → MLD&lt;/b&gt; : Aucune clé étrangère (FK) n&#39;est présente dans les entités du MCD. Les associations et cardinalités portent seules les liaisons.&lt;br&gt;&lt;br&gt;• &lt;b&gt;Gestion fine des Paiements &amp;amp; Présences&lt;/b&gt; : Intégration de &lt;i&gt;PAIEMENT&lt;/i&gt; (adossé à ABONNEMENT) et de &lt;i&gt;PRESENCE&lt;/i&gt; (adossée à INSCRIPTION) pour assurer le calcul des revenus et le classement des assiduités sans redondance.&lt;br&gt;&lt;br&gt;• &lt;b&gt;Exclusion de l&#39;Administrateur&lt;/b&gt; : Rôle applicatif non persisté en table métier." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;overflow=hidden;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#334155;" vertex="1" parent="card-methodo">
+          <mxGeometry y="28" width="480" height="332" as="geometry" />
         </mxCell>
 
         <!-- Carte 2 : Règles de gestion métier -->
         <mxCell id="card-rules" value="&lt;b&gt;2. RÈGLES DE GESTION MÉTIER (RG)&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=3;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#0F172A;" vertex="1" parent="1">
-          <mxGeometry x="40" y="475" width="480" height="465" as="geometry" />
+          <mxGeometry x="40" y="495" width="480" height="520" as="geometry" />
         </mxCell>
-        <mxCell id="card-rules-content" value="&lt;b style=&quot;color:#0F172A;&quot;&gt;Règles formelles déduites du domaine salle de sport :&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b style=&quot;color:#16A34A;&quot;&gt;[RG1] Coach &amp;amp; Cours :&lt;/b&gt;&lt;br&gt;• Un coach peut encadrer zéro ou plusieurs cours : &lt;b&gt;(0,N)&lt;/b&gt;.&lt;br&gt;• Un cours est encadré obligatoirement par exactement un coach : &lt;b&gt;(1,1)&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b style=&quot;color:#4F46E5;&quot;&gt;[RG2] Cours &amp;amp; Inscriptions :&lt;/b&gt;&lt;br&gt;• Un cours peut avoir zéro ou plusieurs inscriptions : &lt;b&gt;(0,N)&lt;/b&gt;.&lt;br&gt;• Une inscription concerne obligatoirement un seul cours : &lt;b&gt;(1,1)&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b style=&quot;color:#2563EB;&quot;&gt;[RG3] Adhérent &amp;amp; Inscriptions :&lt;/b&gt;&lt;br&gt;• Un adhérent peut effectuer zéro ou plusieurs inscriptions : &lt;b&gt;(0,N)&lt;/b&gt;.&lt;br&gt;• Une inscription appartient obligatoirement à un seul adhérent : &lt;b&gt;(1,1)&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b style=&quot;color:#0D9488;&quot;&gt;[RG4] Adhérent &amp;amp; Abonnements :&lt;/b&gt;&lt;br&gt;• Un adhérent peut posséder zéro ou plusieurs abonnements dans son historique : &lt;b&gt;(0,N)&lt;/b&gt;.&lt;br&gt;• Un abonnement appartient obligatoirement à un seul adhérent : &lt;b&gt;(1,1)&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b style=&quot;color:#DC2626;&quot;&gt;[RG5] Règle stricte de non-redondance :&lt;/b&gt;&lt;br&gt;• Aucune association directe supplémentaire &lt;b&gt;ADHERENT ↔ COURS&lt;/b&gt;.&lt;br&gt;• Le lien passe exclusivement par &lt;b&gt;ADHERENT → INSCRIPTION ← COURS&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b style=&quot;color:#475569;&quot;&gt;[RG6] Découplage Administrateur :&lt;/b&gt;&lt;br&gt;• Pas d&#39;entité &lt;i&gt;ADMINISTRATEUR&lt;/i&gt; dans la base métier." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;overflow=hidden;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#334155;" vertex="1" parent="card-rules">
-          <mxGeometry y="28" width="480" height="437" as="geometry" />
+        <mxCell id="card-rules-content" value="&lt;b style=&quot;color:#0F172A;&quot;&gt;Règles formelles déduites du domaine salle de sport :&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b style=&quot;color:#16A34A;&quot;&gt;[RG1] Coach &amp;amp; Cours :&lt;/b&gt;&lt;br&gt;• Un coach peut encadrer zéro ou plusieurs cours : &lt;b&gt;(0,N)&lt;/b&gt;.&lt;br&gt;• Un cours est encadré obligatoirement par un seul coach : &lt;b&gt;(1,1)&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b style=&quot;color:#4F46E5;&quot;&gt;[RG2] Cours &amp;amp; Inscriptions :&lt;/b&gt;&lt;br&gt;• Un cours peut avoir zéro ou plusieurs inscriptions : &lt;b&gt;(0,N)&lt;/b&gt;.&lt;br&gt;• Une inscription concerne obligatoirement un seul cours : &lt;b&gt;(1,1)&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b style=&quot;color:#2563EB;&quot;&gt;[RG3] Adhérent &amp;amp; Inscriptions :&lt;/b&gt;&lt;br&gt;• Un adhérent peut effectuer zéro ou plusieurs inscriptions : &lt;b&gt;(0,N)&lt;/b&gt;.&lt;br&gt;• Une inscription appartient obligatoirement à un seul adhérent : &lt;b&gt;(1,1)&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b style=&quot;color:#0D9488;&quot;&gt;[RG4] Adhérent &amp;amp; Abonnements :&lt;/b&gt;&lt;br&gt;• Un adhérent peut posséder zéro ou plusieurs abonnements : &lt;b&gt;(0,N)&lt;/b&gt;.&lt;br&gt;• Un abonnement appartient obligatoirement à un seul adhérent : &lt;b&gt;(1,1)&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b style=&quot;color:#B45309;&quot;&gt;[RG5] Abonnement &amp;amp; Paiements :&lt;/b&gt;&lt;br&gt;• Un abonnement peut donner lieu à 0 ou plusieurs paiements (versements/mensualités) : &lt;b&gt;(0,N)&lt;/b&gt;.&lt;br&gt;• Un paiement est obligatoirement émis pour un abonnement spécifique : &lt;b&gt;(1,1)&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b style=&quot;color:#DC2626;&quot;&gt;[RG6] Inscription &amp;amp; Présence :&lt;/b&gt;&lt;br&gt;• Une inscription à une séance peut avoir 0 ou 1 pointage d&#39;émargement de présence : &lt;b&gt;(0,1)&lt;/b&gt;.&lt;br&gt;• Un pointage de présence justifie obligatoirement une inscription préalable : &lt;b&gt;(1,1)&lt;/b&gt;." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;overflow=hidden;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#334155;" vertex="1" parent="card-rules">
+          <mxGeometry y="28" width="480" height="492" as="geometry" />
         </mxCell>
 
-        <!-- Carte 3 : Synthèse des 5 entités -->
-        <mxCell id="card-entities" value="&lt;b&gt;3. SYNTHÈSE DES 5 ENTITÉS DU MODÈLE&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=3;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#0F172A;" vertex="1" parent="1">
-          <mxGeometry x="40" y="965" width="480" height="465" as="geometry" />
+        <!-- Carte 3 : Synthèse des 7 entités -->
+        <mxCell id="card-entities" value="&lt;b&gt;3. SYNTHÈSE DES 7 ENTITÉS DU MODÈLE&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=3;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1040" width="480" height="690" as="geometry" />
         </mxCell>
-        <mxCell id="card-entities-content" value="&lt;table border=&quot;0&quot; cellpadding=&quot;4&quot; cellspacing=&quot;0&quot; style=&quot;width:100%; font-size:11px; font-family:Helvetica; color:#1E293B;&quot;&gt;&#10;  &lt;tr style=&quot;background-color:#E2E8F0; font-weight:bold;&quot;&gt;&#10;    &lt;td&gt;Entité&lt;/td&gt;&#10;    &lt;td&gt;Identifiant (PK)&lt;/td&gt;&#10;    &lt;td&gt;Attributs descriptifs&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#F0FDF4;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#16A34A;&quot;&gt;COACH&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;u&gt;id_coach&lt;/u&gt;&lt;/td&gt;&#10;    &lt;td&gt;nom, prenom, specialite&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#EEF2FF;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#4F46E5;&quot;&gt;COURS&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;u&gt;id_cours&lt;/u&gt;&lt;/td&gt;&#10;    &lt;td&gt;nom, date, heure, capacite_max&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#FAF5FF;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#9333EA;&quot;&gt;INSCRIPTION&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;u&gt;id_inscription&lt;/u&gt;&lt;/td&gt;&#10;    &lt;td&gt;date_inscription, statut&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#EFF6FF;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#2563EB;&quot;&gt;ADHERENT&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;u&gt;id_adherent&lt;/u&gt;&lt;/td&gt;&#10;    &lt;td&gt;nom, prenom, email, telephone&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#F0FDFA;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#0D9488;&quot;&gt;ABONNEMENT&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;u&gt;id_abonnement&lt;/u&gt;&lt;/td&gt;&#10;    &lt;td&gt;type, date_debut, date_fin, statut&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;&lt;/table&gt;&#10;&lt;br&gt;&#10;&lt;b style=&quot;color:#0F172A;&quot;&gt;Observations méthodologiques :&lt;/b&gt;&lt;br&gt;&#10;• Les 5 entités répondent fidèlement aux exigences de la consigne.&lt;br&gt;&#10;• Chaque entité possède un identifiant primaire unique clairement spécifié.&lt;br&gt;&#10;• Aucune clé étrangère dans le MCD : les liaisons sont uniquement portées par les associations (ENCADRER, EFFECTUER, CONCERNER, SOUSCRIRE). Les clés étrangères apparaîtront lors de la transition MLD (Phase 2)." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;overflow=hidden;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#334155;" vertex="1" parent="card-entities">
-          <mxGeometry y="28" width="480" height="437" as="geometry" />
+        <mxCell id="card-entities-content" value="&lt;table border=&quot;0&quot; cellpadding=&quot;4&quot; cellspacing=&quot;0&quot; style=&quot;width:100%; font-size:11px; font-family:Helvetica; color:#1E293B;&quot;&gt;&#10;  &lt;tr style=&quot;background-color:#E2E8F0; font-weight:bold;&quot;&gt;&#10;    &lt;td&gt;Entité&lt;/td&gt;&#10;    &lt;td&gt;Identifiant (PK)&lt;/td&gt;&#10;    &lt;td&gt;Attributs descriptifs&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#F0FDF4;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#16A34A;&quot;&gt;COACH&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;u&gt;id_coach&lt;/u&gt;&lt;/td&gt;&#10;    &lt;td&gt;nom, prenom, specialite&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#EEF2FF;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#4F46E5;&quot;&gt;COURS&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;u&gt;id_cours&lt;/u&gt;&lt;/td&gt;&#10;    &lt;td&gt;nom, date, heure, capacite_max&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#FAF5FF;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#9333EA;&quot;&gt;INSCRIPTION&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;u&gt;id_inscription&lt;/u&gt;&lt;/td&gt;&#10;    &lt;td&gt;date_inscription, statut&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#EFF6FF;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#2563EB;&quot;&gt;ADHERENT&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;u&gt;id_adherent&lt;/u&gt;&lt;/td&gt;&#10;    &lt;td&gt;nom, prenom, email, telephone&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#F0FDFA;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#0D9488;&quot;&gt;ABONNEMENT&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;u&gt;id_abonnement&lt;/u&gt;&lt;/td&gt;&#10;    &lt;td&gt;type, date_debut, date_fin, statut&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#FEF3C7;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#D97706;&quot;&gt;PAIEMENT&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;u&gt;id_paiement&lt;/u&gt;&lt;/td&gt;&#10;    &lt;td&gt;montant, date_paiement, mode_paiement, statut&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#FDF2F8;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#DB2777;&quot;&gt;PRESENCE&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;u&gt;id_presence&lt;/u&gt;&lt;/td&gt;&#10;    &lt;td&gt;date_presence, statut_presence&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;&lt;/table&gt;&#10;&lt;br&gt;&#10;&lt;b style=&quot;color:#0F172A;&quot;&gt;Observations méthodologiques :&lt;/b&gt;&lt;br&gt;&#10;• Les 7 entités couvrent exhaustivement toutes les exigences du cahier des charges.&lt;br&gt;&#10;• La séparation nette entre &lt;i&gt;INSCRIPTION&lt;/i&gt; (réservation amont) et &lt;i&gt;PRESENCE&lt;/i&gt; (constat d&#39;assiduité aval) respecte l&#39;atomicité et évite d&#39;altérer les inscriptions sans séance échue.&lt;br&gt;&#10;• La relation &lt;i&gt;ABONNEMENT → PAIEMENT&lt;/i&gt; offre la traçabilité complète des transactions financières nécessaires au calcul des revenus mensuels.&lt;br&gt;&#10;• Zéro clé étrangère dans le MCD : intégrité assurée par la théorie Merise." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;overflow=hidden;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#334155;" vertex="1" parent="card-entities">
+          <mxGeometry y="28" width="480" height="662" as="geometry" />
         </mxCell>
 
         <!-- ======================================================== -->
-        <!-- COLONNE CENTRALE : SPINAL DU MCD (5 ENTITES + 4 ASSOCS)  -->
+        <!-- COLONNE CENTRALE : SPINAL DU MCD (7 ENTITÉS + 6 ASSOCS)  -->
         <!-- ======================================================== -->
 
         <!-- Conteneur d'arrière-plan du flux -->
-        <mxCell id="spine-container" value="&lt;b&gt;FLUX CONCEPTUEL DU DOMAINE DE GESTION&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;startSize=26;fontFamily=Helvetica;fontSize=12;fontStyle=1;align=center;horizontal=1;swimlaneFillColor=#FFFFFF;fillColor=#F8FAFC;fontColor=#475569;strokeColor=#CBD5E1;strokeWidth=1.5;rounded=1;arcSize=2;" vertex="1" parent="1">
-          <mxGeometry x="555" y="110" width="330" height="1320" as="geometry" />
+        <mxCell id="spine-container" value="&lt;b&gt;FLUX CONCEPTUEL DU DOMAINE DE GESTION COMPLET&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;startSize=26;fontFamily=Helvetica;fontSize=12;fontStyle=1;align=center;horizontal=1;swimlaneFillColor=#FFFFFF;fillColor=#F8FAFC;fontColor=#475569;strokeColor=#CBD5E1;strokeWidth=1.5;rounded=1;arcSize=2;" vertex="1" parent="1">
+          <mxGeometry x="555" y="110" width="370" height="1620" as="geometry" />
         </mxCell>
 
         <!-- Entité 1 : COACH -->
         <mxCell id="ent-coach" value="&lt;b&gt;COACH&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=4;fillColor=#F0FDF4;strokeColor=#16A34A;strokeWidth=2;fontFamily=Helvetica;fontSize=13;fontColor=#14532D;" vertex="1" parent="1">
-          <mxGeometry x="590" y="150" width="260" height="120" as="geometry" />
+          <mxGeometry x="610" y="140" width="260" height="110" as="geometry" />
         </mxCell>
         <mxCell id="ent-coach-attrs" value="&lt;b&gt;&lt;u&gt;id_coach&lt;/u&gt;&lt;/b&gt; (PK)&lt;br&gt;nom&lt;br&gt;prenom&lt;br&gt;specialite" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=12;spacingRight=6;spacingTop=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="ent-coach">
-          <mxGeometry y="28" width="260" height="92" as="geometry" />
+          <mxGeometry y="28" width="260" height="82" as="geometry" />
         </mxCell>
 
         <!-- Association 1 : ENCADRER -->
         <mxCell id="rel-encadrer" value="&lt;b&gt;ENCADRER&lt;/b&gt;" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2;fontFamily=Helvetica;fontSize=12;fontColor=#92400E;align=center;verticalAlign=middle;shadow=0;" vertex="1" parent="1">
-          <mxGeometry x="630" y="315" width="180" height="46" as="geometry" />
+          <mxGeometry x="650" y="280" width="180" height="42" as="geometry" />
         </mxCell>
-
-        <!-- Connecteur COACH - ENCADRER -->
         <mxCell id="link-coach-encadrer" style="endArrow=none;html=1;rounded=0;strokeColor=#16A34A;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent-coach" target="rel-encadrer">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <!-- Cardinalité côté COACH -->
         <mxCell id="card-coach-encadrer" value="0,N" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontStyle=1;fontColor=#16A34A;" vertex="1" parent="1">
-          <mxGeometry x="725" y="280" width="40" height="20" as="geometry" />
+          <mxGeometry x="745" y="252" width="40" height="20" as="geometry" />
         </mxCell>
 
-        <!-- Connecteur ENCADRER - COURS -->
         <mxCell id="link-encadrer-cours" style="endArrow=none;html=1;rounded=0;strokeColor=#4F46E5;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="rel-encadrer" target="ent-cours">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <!-- Cardinalité côté COURS -->
         <mxCell id="card-encadrer-cours" value="1,1" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontStyle=1;fontColor=#4F46E5;" vertex="1" parent="1">
-          <mxGeometry x="725" y="375" width="40" height="20" as="geometry" />
+          <mxGeometry x="745" y="325" width="40" height="20" as="geometry" />
         </mxCell>
 
         <!-- Entité 2 : COURS -->
         <mxCell id="ent-cours" value="&lt;b&gt;COURS&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=4;fillColor=#EEF2FF;strokeColor=#4F46E5;strokeWidth=2;fontFamily=Helvetica;fontSize=13;fontColor=#312E81;" vertex="1" parent="1">
-          <mxGeometry x="590" y="410" width="260" height="155" as="geometry" />
+          <mxGeometry x="610" y="350" width="260" height="125" as="geometry" />
         </mxCell>
         <mxCell id="ent-cours-attrs" value="&lt;b&gt;&lt;u&gt;id_cours&lt;/u&gt;&lt;/b&gt; (PK)&lt;br&gt;nom&lt;br&gt;date&lt;br&gt;heure&lt;br&gt;capacite_max" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=12;spacingRight=6;spacingTop=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="ent-cours">
-          <mxGeometry y="28" width="260" height="127" as="geometry" />
+          <mxGeometry y="28" width="260" height="97" as="geometry" />
         </mxCell>
 
         <!-- Association 2 : CONCERNER -->
         <mxCell id="rel-concerner" value="&lt;b&gt;CONCERNER&lt;/b&gt;" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#EDE9FE;strokeColor=#7C3AED;strokeWidth=2;fontFamily=Helvetica;fontSize=12;fontColor=#5B21B6;align=center;verticalAlign=middle;shadow=0;" vertex="1" parent="1">
-          <mxGeometry x="630" y="610" width="180" height="46" as="geometry" />
+          <mxGeometry x="650" y="505" width="180" height="42" as="geometry" />
         </mxCell>
-
-        <!-- Connecteur COURS - CONCERNER -->
         <mxCell id="link-cours-concerner" style="endArrow=none;html=1;rounded=0;strokeColor=#4F46E5;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent-cours" target="rel-concerner">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <!-- Cardinalité côté COURS -->
         <mxCell id="card-cours-concerner" value="0,N" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontStyle=1;fontColor=#4F46E5;" vertex="1" parent="1">
-          <mxGeometry x="725" y="575" width="40" height="20" as="geometry" />
+          <mxGeometry x="745" y="478" width="40" height="20" as="geometry" />
         </mxCell>
 
-        <!-- Connecteur CONCERNER - INSCRIPTION -->
         <mxCell id="link-concerner-insc" style="endArrow=none;html=1;rounded=0;strokeColor=#9333EA;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="rel-concerner" target="ent-inscription">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <!-- Cardinalité côté INSCRIPTION -->
         <mxCell id="card-concerner-insc" value="1,1" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontStyle=1;fontColor=#9333EA;" vertex="1" parent="1">
-          <mxGeometry x="725" y="670" width="40" height="20" as="geometry" />
+          <mxGeometry x="745" y="550" width="40" height="20" as="geometry" />
         </mxCell>
 
         <!-- Entité 3 : INSCRIPTION -->
         <mxCell id="ent-inscription" value="&lt;b&gt;INSCRIPTION&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=4;fillColor=#FAF5FF;strokeColor=#9333EA;strokeWidth=2;fontFamily=Helvetica;fontSize=13;fontColor=#581C87;" vertex="1" parent="1">
-          <mxGeometry x="590" y="705" width="260" height="140" as="geometry" />
+          <mxGeometry x="610" y="575" width="260" height="110" as="geometry" />
         </mxCell>
         <mxCell id="ent-inscription-attrs" value="&lt;b&gt;&lt;u&gt;id_inscription&lt;/u&gt;&lt;/b&gt; (PK)&lt;br&gt;date_inscription&lt;br&gt;statut" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=12;spacingRight=6;spacingTop=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="ent-inscription">
-          <mxGeometry y="28" width="260" height="112" as="geometry" />
+          <mxGeometry y="28" width="260" height="82" as="geometry" />
+        </mxCell>
+
+        <!-- Association 6 (Nouvelle) : EMARGER (INSCRIPTION <-> PRESENCE) -->
+        <mxCell id="rel-emarquer" value="&lt;b&gt;EMARGER&lt;/b&gt;" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FCE7F3;strokeColor=#DB2777;strokeWidth=2;fontFamily=Helvetica;fontSize=12;fontColor=#9D174D;align=center;verticalAlign=middle;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="650" y="715" width="180" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="link-insc-emarquer" style="endArrow=none;html=1;rounded=0;strokeColor=#9333EA;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent-inscription" target="rel-emarquer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="card-insc-emarquer" value="0,1" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontStyle=1;fontColor=#9333EA;" vertex="1" parent="1">
+          <mxGeometry x="745" y="688" width="40" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="link-emarquer-presence" style="endArrow=none;html=1;rounded=0;strokeColor=#DB2777;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="rel-emarquer" target="ent-presence">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="card-emarquer-presence" value="1,1" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontStyle=1;fontColor=#DB2777;" vertex="1" parent="1">
+          <mxGeometry x="745" y="760" width="40" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Entité 7 (Nouvelle) : PRESENCE -->
+        <mxCell id="ent-presence" value="&lt;b&gt;PRESENCE&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=4;fillColor=#FDF2F8;strokeColor=#DB2777;strokeWidth=2;fontFamily=Helvetica;fontSize=13;fontColor=#831843;" vertex="1" parent="1">
+          <mxGeometry x="610" y="785" width="260" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="ent-presence-attrs" value="&lt;b&gt;&lt;u&gt;id_presence&lt;/u&gt;&lt;/b&gt; (PK)&lt;br&gt;date_presence&lt;br&gt;statut_presence" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=12;spacingRight=6;spacingTop=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="ent-presence">
+          <mxGeometry y="28" width="260" height="77" as="geometry" />
         </mxCell>
 
         <!-- Association 3 : EFFECTUER -->
         <mxCell id="rel-effectuer" value="&lt;b&gt;EFFECTUER&lt;/b&gt;" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;strokeWidth=2;fontFamily=Helvetica;fontSize=12;fontColor=#075985;align=center;verticalAlign=middle;shadow=0;" vertex="1" parent="1">
-          <mxGeometry x="630" y="890" width="180" height="46" as="geometry" />
+          <mxGeometry x="650" y="920" width="180" height="42" as="geometry" />
         </mxCell>
-
-        <!-- Connecteur INSCRIPTION - EFFECTUER -->
-        <mxCell id="link-insc-effectuer" style="endArrow=none;html=1;rounded=0;strokeColor=#9333EA;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent-inscription" target="rel-effectuer">
-          <mxGeometry relative="1" as="geometry" />
+        <!-- Ligne depuis INSCRIPTION vers EFFECTUER (contourne PRESENCE sur le côté) -->
+        <mxCell id="link-insc-effectuer" style="endArrow=none;html=1;rounded=0;strokeColor=#9333EA;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="ent-inscription" target="rel-effectuer">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="580" y="630" />
+              <mxPoint x="580" y="941" />
+            </Array>
+          </mxGeometry>
         </mxCell>
-        <!-- Cardinalité côté INSCRIPTION -->
         <mxCell id="card-insc-effectuer" value="1,1" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontStyle=1;fontColor=#9333EA;" vertex="1" parent="1">
-          <mxGeometry x="725" y="855" width="40" height="20" as="geometry" />
+          <mxGeometry x="585" y="640" width="40" height="20" as="geometry" />
         </mxCell>
 
-        <!-- Connecteur EFFECTUER - ADHERENT -->
         <mxCell id="link-effectuer-adh" style="endArrow=none;html=1;rounded=0;strokeColor=#2563EB;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="rel-effectuer" target="ent-adherent">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <!-- Cardinalité côté ADHERENT -->
         <mxCell id="card-effectuer-adh" value="0,N" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontStyle=1;fontColor=#2563EB;" vertex="1" parent="1">
-          <mxGeometry x="725" y="950" width="40" height="20" as="geometry" />
+          <mxGeometry x="745" y="965" width="40" height="20" as="geometry" />
         </mxCell>
 
         <!-- Entité 4 : ADHERENT -->
         <mxCell id="ent-adherent" value="&lt;b&gt;ADHERENT&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=4;fillColor=#EFF6FF;strokeColor=#2563EB;strokeWidth=2;fontFamily=Helvetica;fontSize=13;fontColor=#1E3A8A;" vertex="1" parent="1">
-          <mxGeometry x="590" y="985" width="260" height="140" as="geometry" />
+          <mxGeometry x="610" y="995" width="260" height="125" as="geometry" />
         </mxCell>
         <mxCell id="ent-adherent-attrs" value="&lt;b&gt;&lt;u&gt;id_adherent&lt;/u&gt;&lt;/b&gt; (PK)&lt;br&gt;nom&lt;br&gt;prenom&lt;br&gt;email&lt;br&gt;telephone" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=12;spacingRight=6;spacingTop=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="ent-adherent">
-          <mxGeometry y="28" width="260" height="112" as="geometry" />
+          <mxGeometry y="28" width="260" height="97" as="geometry" />
         </mxCell>
 
         <!-- Association 4 : SOUSCRIRE -->
         <mxCell id="rel-souscrire" value="&lt;b&gt;SOUSCRIRE&lt;/b&gt;" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#CCFBF1;strokeColor=#0D9488;strokeWidth=2;fontFamily=Helvetica;fontSize=12;fontColor=#115E59;align=center;verticalAlign=middle;shadow=0;" vertex="1" parent="1">
-          <mxGeometry x="630" y="1170" width="180" height="46" as="geometry" />
+          <mxGeometry x="650" y="1150" width="180" height="42" as="geometry" />
         </mxCell>
-
-        <!-- Connecteur ADHERENT - SOUSCRIRE -->
         <mxCell id="link-adh-souscrire" style="endArrow=none;html=1;rounded=0;strokeColor=#2563EB;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent-adherent" target="rel-souscrire">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <!-- Cardinalité côté ADHERENT -->
         <mxCell id="card-adh-souscrire" value="0,N" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontStyle=1;fontColor=#2563EB;" vertex="1" parent="1">
-          <mxGeometry x="725" y="1135" width="40" height="20" as="geometry" />
+          <mxGeometry x="745" y="1122" width="40" height="20" as="geometry" />
         </mxCell>
 
-        <!-- Connecteur SOUSCRIRE - ABONNEMENT -->
         <mxCell id="link-souscrire-abonn" style="endArrow=none;html=1;rounded=0;strokeColor=#0D9488;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="rel-souscrire" target="ent-abonnement">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <!-- Cardinalité côté ABONNEMENT -->
         <mxCell id="card-souscrire-abonn" value="1,1" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontStyle=1;fontColor=#0D9488;" vertex="1" parent="1">
-          <mxGeometry x="725" y="1230" width="40" height="20" as="geometry" />
+          <mxGeometry x="745" y="1195" width="40" height="20" as="geometry" />
         </mxCell>
 
         <!-- Entité 5 : ABONNEMENT -->
         <mxCell id="ent-abonnement" value="&lt;b&gt;ABONNEMENT&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=4;fillColor=#F0FDFA;strokeColor=#0D9488;strokeWidth=2;fontFamily=Helvetica;fontSize=13;fontColor=#115E59;" vertex="1" parent="1">
-          <mxGeometry x="590" y="1265" width="260" height="155" as="geometry" />
+          <mxGeometry x="610" y="1225" width="260" height="125" as="geometry" />
         </mxCell>
         <mxCell id="ent-abonnement-attrs" value="&lt;b&gt;&lt;u&gt;id_abonnement&lt;/u&gt;&lt;/b&gt; (PK)&lt;br&gt;type&lt;br&gt;date_debut&lt;br&gt;date_fin&lt;br&gt;statut" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=12;spacingRight=6;spacingTop=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="ent-abonnement">
-          <mxGeometry y="28" width="260" height="127" as="geometry" />
+          <mxGeometry y="28" width="260" height="97" as="geometry" />
+        </mxCell>
+
+        <!-- Association 5 (Nouvelle) : REGLER (ABONNEMENT <-> PAIEMENT) -->
+        <mxCell id="rel-regler" value="&lt;b&gt;REGLER&lt;/b&gt;" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2;fontFamily=Helvetica;fontSize=12;fontColor=#92400E;align=center;verticalAlign=middle;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="650" y="1380" width="180" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="link-abonn-regler" style="endArrow=none;html=1;rounded=0;strokeColor=#0D9488;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ent-abonnement" target="rel-regler">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="card-abonn-regler" value="0,N" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontStyle=1;fontColor=#0D9488;" vertex="1" parent="1">
+          <mxGeometry x="745" y="1352" width="40" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="link-regler-paiement" style="endArrow=none;html=1;rounded=0;strokeColor=#D97706;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="rel-regler" target="ent-paiement">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="card-regler-paiement" value="1,1" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Helvetica;fontSize=12;fontStyle=1;fontColor=#D97706;" vertex="1" parent="1">
+          <mxGeometry x="745" y="1425" width="40" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Entité 6 (Nouvelle) : PAIEMENT -->
+        <mxCell id="ent-paiement" value="&lt;b&gt;PAIEMENT&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=4;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2;fontFamily=Helvetica;fontSize=13;fontColor=#78350F;" vertex="1" parent="1">
+          <mxGeometry x="610" y="1455" width="260" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="ent-paiement-attrs" value="&lt;b&gt;&lt;u&gt;id_paiement&lt;/u&gt;&lt;/b&gt; (PK)&lt;br&gt;montant&lt;br&gt;date_paiement&lt;br&gt;mode_paiement&lt;br&gt;statut" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=12;spacingRight=6;spacingTop=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#0F172A;" vertex="1" parent="ent-paiement">
+          <mxGeometry y="28" width="260" height="97" as="geometry" />
         </mxCell>
 
         <!-- ======================================================== -->
@@ -192,27 +230,27 @@
         <!-- ======================================================== -->
 
         <!-- Carte 4 : Détail des Associations & Cardinalités -->
-        <mxCell id="card-assocs" value="&lt;b&gt;4. DÉTAIL DES ASSOCIATIONS &amp;amp; CARDINALITÉS&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=3;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#0F172A;" vertex="1" parent="1">
-          <mxGeometry x="920" y="110" width="480" height="440" as="geometry" />
+        <mxCell id="card-assocs" value="&lt;b&gt;4. DÉTAIL DES 6 ASSOCIATIONS &amp;amp; CARDINALITÉS&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=3;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="960" y="110" width="560" height="520" as="geometry" />
         </mxCell>
-        <mxCell id="card-assocs-content" value="&lt;table border=&quot;0&quot; cellpadding=&quot;4&quot; cellspacing=&quot;0&quot; style=&quot;width:100%; font-size:11px; font-family:Helvetica; color:#1E293B;&quot;&gt;&#10;  &lt;tr style=&quot;background-color:#E2E8F0; font-weight:bold;&quot;&gt;&#10;    &lt;td&gt;Association&lt;/td&gt;&#10;    &lt;td&gt;Entité A&lt;/td&gt;&#10;    &lt;td&gt;Card. A&lt;/td&gt;&#10;    &lt;td&gt;Card. B&lt;/td&gt;&#10;    &lt;td&gt;Entité B&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#FEF3C7;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#92400E;&quot;&gt;ENCADRER&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;COACH&lt;/td&gt;&#10;    &lt;td&gt;&lt;b&gt;0,N&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;b&gt;1,1&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;COURS&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#EDE9FE;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#5B21B6;&quot;&gt;CONCERNER&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;COURS&lt;/td&gt;&#10;    &lt;td&gt;&lt;b&gt;0,N&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;b&gt;1,1&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;INSCRIPTION&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#E0F2FE;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#075985;&quot;&gt;EFFECTUER&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;ADHERENT&lt;/td&gt;&#10;    &lt;td&gt;&lt;b&gt;0,N&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;b&gt;1,1&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;INSCRIPTION&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#CCFBF1;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#115E59;&quot;&gt;SOUSCRIRE&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;ADHERENT&lt;/td&gt;&#10;    &lt;td&gt;&lt;b&gt;0,N&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;b&gt;1,1&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;ABONNEMENT&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;&lt;/table&gt;&#10;&lt;br&gt;&#10;&lt;b style=&quot;color:#0F172A;&quot;&gt;Justification fonctionnelle des cardinalités :&lt;/b&gt;&lt;br&gt;&#10;• &lt;b&gt;COACH (0,N)&lt;/b&gt; : Un nouveau coach ou remplaçant peut n&#39;avoir aucun cours assigné actuellement.&lt;br&gt;&#10;• &lt;b&gt;COURS (1,1)&lt;/b&gt; : Tout cours au planning doit obligatoirement avoir son coach référent.&lt;br&gt;&#10;• &lt;b&gt;COURS (0,N)&lt;/b&gt; : Un cours nouvellement publié commence à 0 inscription.&lt;br&gt;&#10;• &lt;b&gt;INSCRIPTION (1,1)&lt;/b&gt; : Une inscription vise un cours unique et appartient à un seul adhérent.&lt;br&gt;&#10;• &lt;b&gt;ADHERENT (0,N)&lt;/b&gt; : Un adhérent nouvellement créé n&#39;a pas encore d&#39;inscription ni d&#39;abonnement.&lt;br&gt;&#10;• &lt;b&gt;ABONNEMENT (1,1)&lt;/b&gt; : Un abonnement émis est nominatif et rattaché à un unique adhérent." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;overflow=hidden;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#334155;" vertex="1" parent="card-assocs">
-          <mxGeometry y="28" width="480" height="412" as="geometry" />
+        <mxCell id="card-assocs-content" value="&lt;table border=&quot;0&quot; cellpadding=&quot;4&quot; cellspacing=&quot;0&quot; style=&quot;width:100%; font-size:11px; font-family:Helvetica; color:#1E293B;&quot;&gt;&#10;  &lt;tr style=&quot;background-color:#E2E8F0; font-weight:bold;&quot;&gt;&#10;    &lt;td&gt;Association&lt;/td&gt;&#10;    &lt;td&gt;Entité A&lt;/td&gt;&#10;    &lt;td&gt;Card. A&lt;/td&gt;&#10;    &lt;td&gt;Card. B&lt;/td&gt;&#10;    &lt;td&gt;Entité B&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#FEF3C7;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#92400E;&quot;&gt;ENCADRER&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;COACH&lt;/td&gt;&#10;    &lt;td&gt;&lt;b&gt;0,N&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;b&gt;1,1&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;COURS&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#EDE9FE;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#5B21B6;&quot;&gt;CONCERNER&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;COURS&lt;/td&gt;&#10;    &lt;td&gt;&lt;b&gt;0,N&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;b&gt;1,1&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;INSCRIPTION&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#FCE7F3;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#9D174D;&quot;&gt;EMARGER&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;INSCRIPTION&lt;/td&gt;&#10;    &lt;td&gt;&lt;b&gt;0,1&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;b&gt;1,1&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;PRESENCE&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#E0F2FE;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#075985;&quot;&gt;EFFECTUER&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;ADHERENT&lt;/td&gt;&#10;    &lt;td&gt;&lt;b&gt;0,N&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;b&gt;1,1&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;INSCRIPTION&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#CCFBF1;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#115E59;&quot;&gt;SOUSCRIRE&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;ADHERENT&lt;/td&gt;&#10;    &lt;td&gt;&lt;b&gt;0,N&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;b&gt;1,1&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;ABONNEMENT&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;  &lt;tr style=&quot;background-color:#FEF3C7;&quot;&gt;&#10;    &lt;td&gt;&lt;b style=&quot;color:#92400E;&quot;&gt;REGLER&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;ABONNEMENT&lt;/td&gt;&#10;    &lt;td&gt;&lt;b&gt;0,N&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;&lt;b&gt;1,1&lt;/b&gt;&lt;/td&gt;&#10;    &lt;td&gt;PAIEMENT&lt;/td&gt;&#10;  &lt;/tr&gt;&#10;&lt;/table&gt;&#10;&lt;br&gt;&#10;&lt;b style=&quot;color:#0F172A;&quot;&gt;Justification fonctionnelle des cardinalités :&lt;/b&gt;&lt;br&gt;&#10;• &lt;b&gt;COACH (0,N) ↔ (1,1) COURS&lt;/b&gt; : Un coach peut animer plusieurs cours ; un cours a un coach titulaire.&lt;br&gt;&#10;• &lt;b&gt;COURS (0,N) ↔ (1,1) INSCRIPTION&lt;/b&gt; : Un cours reçoit des inscriptions ; chaque inscription vise un seul cours.&lt;br&gt;&#10;• &lt;b&gt;INSCRIPTION (0,1) ↔ (1,1) PRESENCE&lt;/b&gt; : Une inscription donne lieu au maximum à un émargement de présence au cours ; tout émargement atteste d&#39;une inscription valide.&lt;br&gt;&#10;• &lt;b&gt;ADHERENT (0,N) ↔ (1,1) INSCRIPTION&lt;/b&gt; : Un membre s&#39;inscrit à plusieurs séances.&lt;br&gt;&#10;• &lt;b&gt;ADHERENT (0,N) ↔ (1,1) ABONNEMENT&lt;/b&gt; : Un membre souscrit des abonnements successifs.&lt;br&gt;&#10;• &lt;b&gt;ABONNEMENT (0,N) ↔ (1,1) PAIEMENT&lt;/b&gt; : Un abonnement fait l&#39;objet de paiements (comptant ou versements multiples) ; un paiement est strictement alloué à un contrat d&#39;adhésion." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;overflow=hidden;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#334155;" vertex="1" parent="card-assocs">
+          <mxGeometry y="28" width="560" height="492" as="geometry" />
         </mxCell>
 
         <!-- Carte 5 : Formes Normales (1FN, 2FN, 3FN) -->
-        <mxCell id="card-norm" value="&lt;b&gt;5. NORMALISATION CONCEPTUELLE&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=3;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#0F172A;" vertex="1" parent="1">
-          <mxGeometry x="920" y="575" width="480" height="365" as="geometry" />
+        <mxCell id="card-norm" value="&lt;b&gt;5. NORMALISATION CONCEPTUELLE &amp;amp; TRANSITION MLD&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=3;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="960" y="655" width="560" height="420" as="geometry" />
         </mxCell>
-        <mxCell id="card-norm-content" value="&lt;b style=&quot;color:#0F172A;&quot;&gt;Respect rigoureux des Formes Normales :&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;b&gt;Première Forme Normale (1FN) :&lt;/b&gt;&lt;br&gt;Tous les attributs sont atomiques. Les noms et prénoms sont distincts, la date et l&#39;heure de cours sont individualisées, et chaque entité possède une clé primaire identifiante.&lt;br&gt;&lt;br&gt;• &lt;b&gt;Deuxième Forme Normale (2FN) :&lt;/b&gt;&lt;br&gt;Toutes les clés primaires sont élémentaires (mono-attribut : &lt;i&gt;id_adherent, id_coach, id_cours, id_inscription, id_abonnement&lt;/i&gt;). Chaque attribut non-clé dépend pleinement et directement de sa clé primaire.&lt;br&gt;&lt;br&gt;• &lt;b&gt;Troisième Forme Normale (3FN) :&lt;/b&gt;&lt;br&gt;Aucun attribut non-clé ne dépend d&#39;un autre attribut non-clé. Il n&#39;y a pas de dépendance transitive cachée au sein des entités.&lt;br&gt;&lt;br&gt;• &lt;b&gt;Préparation à la dérivation MLD (Phase 2) :&lt;/b&gt;&lt;br&gt;Toutes les associations sont de type &lt;b&gt;(0,N) ↔ (1,1)&lt;/b&gt;. En MLD relationnel, cela se traduira directement par la migration de la clé primaire du côté (0,N) comme clé étrangère (FK) dans la table du côté (1,1)." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;overflow=hidden;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#334155;" vertex="1" parent="card-norm">
-          <mxGeometry y="28" width="480" height="337" as="geometry" />
+        <mxCell id="card-norm-content" value="&lt;b style=&quot;color:#0F172A;&quot;&gt;Respect rigoureux des Formes Normales (Codd) :&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;b&gt;Première Forme Normale (1FN) :&lt;/b&gt;&lt;br&gt;Tous les attributs sont scalaires et atomiques. Découplage strict des noms et prénoms, distinction date/heure, séparation montant et date de paiement, et définition d&#39;une clé primaire univoque pour les 7 entités.&lt;br&gt;&lt;br&gt;• &lt;b&gt;Deuxième Forme Normale (2FN) :&lt;/b&gt;&lt;br&gt;Toutes les clés primaires sont élémentaires (mono-attribut : &lt;i&gt;id_coach, id_cours, id_inscription, id_adherent, id_abonnement, id_paiement, id_presence&lt;/i&gt;). Chaque attribut non-clé dépend pleinement et directement de sa clé primaire.&lt;br&gt;&lt;br&gt;• &lt;b&gt;Troisième Forme Normale (3FN) :&lt;/b&gt;&lt;br&gt;Aucun attribut non-clé ne dépend transitivement d&#39;un autre attribut non-clé. L&#39;entité PRESENCE dépend uniquement de l&#39;inscription (qui référence le cours et l&#39;adhérent), évitant toute redondance relationnelle.&lt;br&gt;&lt;br&gt;• &lt;b&gt;Règles de passage MLD :&lt;/b&gt;&lt;br&gt;Pour les relations &lt;b&gt;(0,N) ↔ (1,1)&lt;/b&gt;, la clé primaire du côté &lt;b&gt;(0,N)&lt;/b&gt; migrera comme clé étrangère (&lt;b&gt;FK&lt;/b&gt;) dans la table du côté &lt;b&gt;(1,1)&lt;/b&gt;. Pour la relation &lt;b&gt;(0,1) ↔ (1,1)&lt;/b&gt; entre INSCRIPTION et PRESENCE, &lt;i&gt;id_inscription&lt;/i&gt; migre en clé étrangère UNIQUE dans PRESENCE." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;overflow=hidden;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#334155;" vertex="1" parent="card-norm">
+          <mxGeometry y="28" width="560" height="392" as="geometry" />
         </mxCell>
 
-        <!-- Carte 6 : Checklist de conformité Phase 1 -->
-        <mxCell id="card-audit" value="&lt;b&gt;6. CHECKLIST DE CONFORMITÉ — PHASE 1&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=3;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#0F172A;" vertex="1" parent="1">
-          <mxGeometry x="920" y="965" width="480" height="465" as="geometry" />
+        <!-- Carte 6 : Checklist de conformité -->
+        <mxCell id="card-audit" value="&lt;b&gt;6. CHECKLIST DE CONFORMITÉ GLOBALE&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;rounded=1;arcSize=3;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=1.5;fontFamily=Helvetica;fontSize=12;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="960" y="1100" width="560" height="630" as="geometry" />
         </mxCell>
-        <mxCell id="card-audit-content" value="&lt;b style=&quot;color:#0F172A;&quot;&gt;Contrôle des 12 critères obligatoires :&lt;/b&gt;&lt;br&gt;&lt;br&gt;✔ &lt;b&gt;Exactement 5 entités métier :&lt;/b&gt; ADHERENT, COACH, COURS, INSCRIPTION, ABONNEMENT.&lt;br&gt;✔ &lt;b&gt;Identifiants clairement indiqués :&lt;/b&gt; id_adherent, id_coach, id_cours, id_inscription, id_abonnement (marqués PK et soulignés).&lt;br&gt;✔ &lt;b&gt;ADHERENT — INSCRIPTION :&lt;/b&gt; Association EFFECTUER (0,N) — (1,1) conforme.&lt;br&gt;✔ &lt;b&gt;COURS — INSCRIPTION :&lt;/b&gt; Association CONCERNER (0,N) — (1,1) conforme.&lt;br&gt;✔ &lt;b&gt;COACH — COURS :&lt;/b&gt; Association ENCADRER (0,N) — (1,1) conforme.&lt;br&gt;✔ &lt;b&gt;ADHERENT — ABONNEMENT :&lt;/b&gt; Association SOUSCRIRE (0,N) — (1,1) conforme.&lt;br&gt;✔ &lt;b&gt;Aucune relation directe ADHERENT ↔ COURS :&lt;/b&gt; Respect du chemin obligatoire via INSCRIPTION.&lt;br&gt;✔ &lt;b&gt;ADMINISTRATEUR exclu du MCD :&lt;/b&gt; Acteur applicatif non persisté en table métier.&lt;br&gt;✔ &lt;b&gt;Toutes les cardinalités visibles :&lt;/b&gt; Placées sur chaque patte de connexion.&lt;br&gt;✔ &lt;b&gt;Aucune notion SQL/MLD :&lt;/b&gt; Pas de VARCHAR, INT, CREATE TABLE, ni clés étrangères relationnelles (absence totale de FK dans les entités).&lt;br&gt;✔ &lt;b&gt;Diagramme lisible et structuré :&lt;/b&gt; Organisation verticale recommandée respectée avec panneaux explicatifs.&lt;br&gt;✔ &lt;b&gt;Fichier dédié :&lt;/b&gt; mcd-salle-sport.drawio créé sans altérer exercice-2-uml-salle-sport.drawio." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;overflow=hidden;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#334155;" vertex="1" parent="card-audit">
-          <mxGeometry y="28" width="480" height="437" as="geometry" />
+        <mxCell id="card-audit-content" value="&lt;b style=&quot;color:#0F172A;&quot;&gt;Contrôle des critères d&#39;excellence :&lt;/b&gt;&lt;br&gt;&lt;br&gt;✔ &lt;b&gt;7 entités métier exhaustives :&lt;/b&gt; COACH, COURS, INSCRIPTION, ADHERENT, ABONNEMENT, PAIEMENT, PRESENCE.&lt;br&gt;✔ &lt;b&gt;Gestion complète des paiements :&lt;/b&gt; Entité PAIEMENT liée à ABONNEMENT pour les calculs de chiffre d&#39;affaires mensuel.&lt;br&gt;✔ &lt;b&gt;Gestion complète des présences :&lt;/b&gt; Entité PRESENCE liée à INSCRIPTION pour le classement du Top 3 d&#39;assiduité.&lt;br&gt;✔ &lt;b&gt;Identifiants clairement indiqués :&lt;/b&gt; id_coach, id_cours, id_inscription, id_adherent, id_abonnement, id_paiement, id_presence (soulignés et marqués PK).&lt;br&gt;✔ &lt;b&gt;Aucune relation directe redondante :&lt;/b&gt; Pas de lien parasite direct ADHERENT ↔ COURS ni ADHERENT ↔ PRESENCE.&lt;br&gt;✔ &lt;b&gt;ADMINISTRATEUR exclu :&lt;/b&gt; Rôle système découplé des données d&#39;exploitation.&lt;br&gt;✔ &lt;b&gt;Toutes les cardinalités indiquées :&lt;/b&gt; Visibles sur les liens entre entités et associations.&lt;br&gt;✔ &lt;b&gt;Aucune clé étrangère dans le MCD :&lt;/b&gt; Zéro FK relationnelle dans les entités conceptuelles (respect de la méthode Merise).&lt;br&gt;✔ &lt;b&gt;Organisation graphique soignée :&lt;/b&gt; Alignement vertical clair avec panneaux descriptifs latéraux." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;overflow=hidden;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=#334155;" vertex="1" parent="card-audit">
+          <mxGeometry y="28" width="560" height="602" as="geometry" />
         </mxCell>
 
       </root>

@@ -48,7 +48,7 @@ INSERT INTO COURS (id_cours, nom, date, heure, capacite_max, id_coach) VALUES
 -- ============================================
 -- 4. DONNÉES DES INSCRIPTIONS
 -- ============================================
--- Inscriptions des adhérents aux cours (minimum 15 inscriptions, sans doublon de couple adherent/cours)
+-- Inscriptions des adhérents aux cours (sans doublon de couple adherent/cours)
 INSERT INTO INSCRIPTION (id_inscription, date_inscription, statut, id_adherent, id_cours) VALUES
 (1, '2026-10-01', 'CONFIRMEE', 1, 6),
 (2, '2026-10-01', 'CONFIRMEE', 2, 6),
@@ -72,7 +72,7 @@ INSERT INTO INSCRIPTION (id_inscription, date_inscription, statut, id_adherent, 
 -- ============================================
 -- 5. DONNÉES DES ABONNEMENTS
 -- ============================================
--- Abonnements souscrits par les adhérents (minimum 10 abonnements, date_fin >= date_debut)
+-- Abonnements souscrits par les adhérents (actifs, expirés, renouvellements historiques)
 INSERT INTO ABONNEMENT (id_abonnement, type, date_debut, date_fin, statut, id_adherent) VALUES
 (1, 'Annuel', '2026-01-01', '2026-12-31', 'ACTIF', 1),
 (2, 'Trimestriel', '2026-08-01', '2026-10-31', 'ACTIF', 2),
@@ -85,4 +85,50 @@ INSERT INTO ABONNEMENT (id_abonnement, type, date_debut, date_fin, statut, id_ad
 (9, 'Mensuel', '2026-09-15', '2026-10-15', 'SUSPENDU', 9),
 (10, 'Annuel', '2026-03-01', '2027-02-28', 'ACTIF', 10),
 (11, 'Trimestriel', '2026-09-01', '2026-11-30', 'ACTIF', 11),
-(12, 'Mensuel', '2026-06-01', '2026-06-30', 'EXPIRE', 12);
+(12, 'Mensuel', '2026-06-01', '2026-06-30', 'EXPIRE', 12),
+(13, 'Annuel', '2025-01-01', '2025-12-31', 'EXPIRE', 1),
+(14, 'Mensuel', '2026-08-01', '2026-08-31', 'EXPIRE', 3),
+(15, 'Mensuel', '2026-10-01', '2026-10-31', 'ACTIF', 7);
+
+-- ============================================
+-- 6. DONNÉES DES PAIEMENTS
+-- ============================================
+-- Règlements financiers des abonnements (montants en FCFA, différents mois et modes)
+INSERT INTO PAIEMENT (id_paiement, montant, date_paiement, mode_paiement, statut, id_abonnement) VALUES
+(1, 110000.00, '2026-01-03', 'Wave', 'PAYE', 1),
+(2, 65000.00, '2026-08-01', 'Orange Money', 'PAYE', 2),
+(3, 25000.00, '2026-10-01', 'Wave', 'PAYE', 3),
+(4, 110000.00, '2026-02-01', 'Virement', 'PAYE', 4),
+(5, 110000.00, '2026-08-01', 'Virement', 'PAYE', 4),
+(6, 65000.00, '2026-09-01', 'Wave', 'PAYE', 5),
+(7, 25000.00, '2026-07-01', 'Espèces', 'PAYE', 6),
+(8, 65000.00, '2026-05-01', 'Carte Bancaire', 'PAYE', 7),
+(9, 220000.00, '2025-01-05', 'Virement', 'PAYE', 8),
+(10, 25000.00, '2026-09-15', 'Wave', 'ECHOUE', 9),
+(11, 220000.00, '2026-03-01', 'Carte Bancaire', 'PAYE', 10),
+(12, 65000.00, '2026-09-01', 'Orange Money', 'PAYE', 11),
+(13, 25000.00, '2026-06-01', 'Espèces', 'PAYE', 12),
+(14, 25000.00, '2026-10-02', 'Orange Money', 'PAYE', 15),
+(15, 110000.00, '2026-10-05', 'Wave', 'PAYE', 1),
+(16, 65000.00, '2026-10-06', 'Carte Bancaire', 'EN_ATTENTE', 2);
+
+-- ============================================
+-- 7. DONNÉES DES PRÉSENCES
+-- ============================================
+-- Émargements d'assiduité liés aux inscriptions (statut PRESENT ou ABSENT)
+INSERT INTO PRESENCE (id_presence, date_presence, statut_presence, id_inscription) VALUES
+(1, '2026-10-13', 'PRESENT', 1),
+(2, '2026-10-13', 'PRESENT', 2),
+(3, '2026-10-13', 'ABSENT', 3),
+(4, '2026-10-14', 'PRESENT', 4),
+(5, '2026-10-14', 'PRESENT', 5),
+(6, '2026-10-14', 'PRESENT', 6),
+(7, '2026-10-14', 'PRESENT', 7),
+(8, '2026-10-12', 'PRESENT', 8),
+(9, '2026-10-12', 'PRESENT', 10),
+(10, '2026-10-12', 'PRESENT', 12),
+(11, '2026-10-12', 'ABSENT', 13),
+(12, '2026-10-12', 'PRESENT', 14),
+(13, '2026-10-13', 'PRESENT', 15),
+(14, '2026-10-13', 'PRESENT', 17),
+(15, '2026-10-14', 'ABSENT', 18);

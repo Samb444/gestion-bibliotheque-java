@@ -362,3 +362,50 @@ En tant qu'exercice pratique centré sur la programmation orientée objet en con
 * **Interface exclusivement textuelle** : l'interaction se fait uniquement via la console en ligne de commande ; aucune interface web ni graphique (GUI) n'est fournie.
 * **Absence d'authentification** : aucun module de gestion des comptes utilisateurs, de mots de passe ou de contrôle d'accès par rôle (administrateur, bibliothécaire, membre) n'est implémenté.
 * **Monothreading** : l'application est conçue pour un usage séquentiel mono-utilisateur en ligne de commande.
+
+---
+
+## 16. Exercice 3 — Base de données Salle de Sport (MySQL / MariaDB)
+
+Dans le cadre du parcours de montée en compétences, l'**Exercice 3** aborde la modélisation et l'exploitation d'une base de données relationnelle dédiée à la gestion d'une salle de sport.
+
+### Périmètre du modèle (7 entités normalisées en 3NF) :
+* **COACH** : encadre les séances sportives.
+* **ADHERENT** : membres du club de sport.
+* **COURS** : séances planifiées encadrées par un coach (capacité maximale, créneau horaire).
+* **INSCRIPTION** : réservations des adhérents aux cours.
+* **PRESENCE** : émargement effectif lors de la séance (`PRESENT` ou `ABSENT`), distinct de l'inscription pour isoler l'assiduité réelle.
+* **ABONNEMENT** : formules souscrites (`Mensuel`, `Trimestriel`, `Annuel`), avec suivi des périodes de validité.
+* **PAIEMENT** : traçabilité financière des règlements rattachés aux abonnements (montants, modes de paiement, statuts `PAYE`, `EN_ATTENTE`, `ECHOUE`) garantissant le calcul exact du chiffre d'affaires.
+
+### Fichiers de conception et scripts SQL :
+* **MCD** : [mcd-salle-sport.drawio](file:///c:/Users/Lenovo/Documents/java-exercices/gestion-bibliotheque/mcd-salle-sport.drawio) (Formalisme Merise pur, sans FK).
+* **MLD** : [mld-salle-sport.drawio](file:///c:/Users/Lenovo/Documents/java-exercices/gestion-bibliotheque/mld-salle-sport.drawio) (7 tables, PK soulignées, 6 FK, typage MySQL).
+* **DDL** : [sql/salle-sport.sql](file:///c:/Users/Lenovo/Documents/java-exercices/gestion-bibliotheque/sql/salle-sport.sql) (Création de la base `salle_sport` et des tables InnoDB).
+* **Jeu de données** : [sql/data.sql](file:///c:/Users/Lenovo/Documents/java-exercices/gestion-bibliotheque/sql/data.sql) (Données réalistes sénégalaises pour toutes les tables).
+* **Requêtes métier** : [sql/queries.sql](file:///c:/Users/Lenovo/Documents/java-exercices/gestion-bibliotheque/sql/queries.sql) (Couvre les 6 exigences clés : cours et inscrits, cours complets, adhérents sans abonnement actif, Top 3 des assidus, répartition par type d'abonnement dédoublonnée, revenus du mois).
+* **Indexation** : [sql/indexes.sql](file:///c:/Users/Lenovo/Documents/java-exercices/gestion-bibliotheque/sql/indexes.sql) (Index B-Tree ciblés sur nom/prénom, statut/date paiement, abonnement actif, statut présence).
+* **Plans d'exécution** : [sql/explain.sql](file:///c:/Users/Lenovo/Documents/java-exercices/gestion-bibliotheque/sql/explain.sql) (Analyses EXPLAIN démontrant les index couvrants et range scans).
+* **Audit de normalisation** : [docs/normalisation-salle-sport.md](file:///c:/Users/Lenovo/Documents/java-exercices/gestion-bibliotheque/docs/normalisation-salle-sport.md).
+
+### Lancement des scripts SQL sous MariaDB / MySQL :
+```powershell
+# Création de la structure
+cmd /c "C:\xampp\mysql\bin\mysql.exe -u root --default-character-set=utf8mb4 < sql\salle-sport.sql"
+
+# Insertion des données de test
+cmd /c "C:\xampp\mysql\bin\mysql.exe -u root --default-character-set=utf8mb4 < sql\data.sql"
+
+# Exécution des requêtes métier
+cmd /c "C:\xampp\mysql\bin\mysql.exe -u root --default-character-set=utf8mb4 -t < sql\queries.sql"
+
+# Application des index optimisés
+cmd /c "C:\xampp\mysql\bin\mysql.exe -u root --default-character-set=utf8mb4 < sql\indexes.sql"
+
+# Analyse des plans d'exécution EXPLAIN
+cmd /c "C:\xampp\mysql\bin\mysql.exe -u root --default-character-set=utf8mb4 -t < sql\explain.sql"
+```
+
+### Table volontairement mal conçue :
+* **Statut : En attente de la table fournie par l'enseignant.** Conforme à la consigne, aucune fausse table n'a été inventée. L'analyse de décomposition en 3NF sera réalisée dès sa mise à disposition.
+
