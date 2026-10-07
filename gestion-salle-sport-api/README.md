@@ -4,16 +4,16 @@ Projet pédagogique d'initiation à **Spring Boot 3** et aux architectures d'API
 
 ---
 
-## 📌 État d'avancement : Phase 2 (Modélisation du Domaine & Entités JPA)
+## 📌 État d'avancement : Phase 3 (Repositories Spring Data JPA & Services Métiers)
 
-Cette étape met en place les entités JPA fondamentales, leurs contraintes, leurs énumérations et leurs associations relationnelles :
-- Création des entités persistantes : `Adherent`, `Cours`, `Inscription` ;
-- Énumérations associées : `TypeCours` et `StatutPresence` (mappées en `EnumType.STRING`) ;
-- Relations JPA bidirectionnelles avec méthodes d'assistance et protection contre les boucles infinies ;
-- Tests unitaires des entités et tests d'intégration du métamodèle JPA (`Metamodel`) ;
+Cette étape met en place la couche d'accès aux données (Spring Data JPA) et la couche de services avec injection par constructeur :
+- **Repositories Spring Data JPA** : interfaces `AdherentRepository`, `CoursRepository` et `InscriptionRepository` étendant `JpaRepository` ;
+- **Services Métiers** : classes `AdherentService`, `CoursService` et `InscriptionService` assurant la délégation propre et l'isolation ;
+- **Injection de Dépendances** : injection par constructeur sans annotation `@Autowired` sur les attributs ;
+- **Tests Unitaires Mockito** : validation de la délégation des méthodes de service vers les repositories en isolation totale de la base de données ;
 - Endpoint technique de vérification (`/api/health`) maintenu opérationnel.
 
-> **Important (Périmètre Phase 2)** : Conformément aux consignes pédagogiques, les Repositories Spring Data, DTOs, Mappers, Services métiers, Contrôleurs CRUD, validations `@Valid` et sécurité JWT seront intégrés dans les phases ultérieures. Aucun script DDL automatique n'altère la base de données (`spring.jpa.hibernate.ddl-auto=none`).
+> **Important (Périmètre Phase 3)** : Conformément aux consignes pédagogiques de découpage, les Contrôleurs REST CRUD, DTOs, Mappers, validations `@Valid` et sécurité JWT seront intégrés dans les phases suivantes. Aucun script DDL automatique n'altère la base de données (`spring.jpa.hibernate.ddl-auto=none`).
 
 ---
 
@@ -70,10 +70,45 @@ Représente la participation d'un adhérent à un cours spécifique.
 - **`TypeCours`** : `YOGA`, `CARDIO`, `MUSCULATION`, `HIIT`, `CIRCUIT`.
 - **`StatutPresence`** : `PRESENT`, `ABSENT`.
 
-### 5. Bonnes pratiques appliquées
-- **Pas de Lombok (`@Data`)** : Contrôle explicite des constructeurs, getters, setters et méthodes d'assistance bidirectionnelles (`addInscription`, `removeInscription`).
-- **Prévention des boucles infinies** : Exclusion stricte des collections (`inscriptions`) et associations inverses des méthodes `toString()`, `equals()` et `hashCode()`.
-- **Typage moderne `java.time`** : Utilisation exclusive de `LocalDate` et `LocalDateTime`.
+---
+
+## 🗄️ Repositories Spring Data JPA (Phase 3)
+
+Situés dans le package `sn.codesamb.gestionsallesport.repository` :
+
+| Repository | Entité | Méthodes spécifiques |
+| :--- | :--- | :--- |
+| **`AdherentRepository`** | `Adherent` | `Optional<Adherent> findByEmail(String email)` |
+| **`CoursRepository`** | `Cours` | Méthodes CRUD standard `JpaRepository` |
+| **`InscriptionRepository`** | `Inscription` | `List<Inscription> findByAdherentId(Long adherentId)`<br>`List<Inscription> findByCoursId(Long coursId)`<br>`boolean existsByAdherentIdAndCoursId(Long adherentId, Long coursId)` |
+
+---
+
+## ⚙️ Services Métiers (Phase 3)
+
+Situés dans le package `sn.codesamb.gestionsallesport.service` avec injection obligatoire par constructeur (`final` fields) :
+
+### 1. `AdherentService`
+- `List<Adherent> findAll()`
+- `Optional<Adherent> findById(Long id)`
+- `Optional<Adherent> findByEmail(String email)`
+- `Adherent save(Adherent adherent)`
+- `void deleteById(Long id)`
+
+### 2. `CoursService`
+- `List<Cours> findAll()`
+- `Optional<Cours> findById(Long id)`
+- `Cours save(Cours cours)`
+- `void deleteById(Long id)`
+
+### 3. `InscriptionService`
+- `List<Inscription> findAll()`
+- `Optional<Inscription> findById(Long id)`
+- `List<Inscription> findByAdherentId(Long adherentId)`
+- `List<Inscription> findByCoursId(Long coursId)`
+- `boolean existsByAdherentIdAndCoursId(Long adherentId, Long coursId)`
+- `Inscription save(Inscription inscription)`
+- `void deleteById(Long id)`
 
 ---
 
@@ -103,23 +138,41 @@ gestion-salle-sport-api/
     ├── main/
     │   ├── java/sn/codesamb/gestionsallesport/
     │   │   ├── controller/      # Contrôleurs REST (HealthController)
-    │   │   ├── entity/          # Entités JPA : Adherent, Cours, Inscription, Enums (Phase 2)
-    │   │   ├── service/         # Logique métier et règles de gestion (Phase 3+)
-    │   │   ├── repository/      # Interfaces Spring Data JPA d'accès aux données (Phase 3+)
-    │   │   ├── dto/             # Data Transfer Objects requêtes/réponses (Phase 3+)
-    │   │   ├── exception/       # Exceptions métier et gestionnaire global (Phase 3+)
+    │   │   ├── entity/          # Entités JPA : Adherent, Cours, Inscription, Enums
+    │   │   ├── repository/      # Spring Data JPA : AdherentRepository, CoursRepository, InscriptionRepository
+    │   │   ├── service/         # Services : AdherentService, CoursService, InscriptionService
+    │   │   ├── dto/             # Data Transfer Objects (Phase 4+)
+    │   │   ├── exception/       # Exceptions métier et gestionnaire d'erreurs (Phase 4+)
     │   │   └── GestionSalleSportApplication.java  # Point d'entrée principal
     │   └── resources/
     │       └── application.properties             # Configuration Spring Boot & MySQL
     └── test/
         └── java/sn/codesamb/gestionsallesport/
-            ├── GestionSalleSportApplicationTests.java  # Test de chargement de contexte
+            ├── GestionSalleSportApplicationTests.java  # Test de chargement de contexte Spring
             ├── controller/
             │   └── HealthControllerTest.java           # Test unitaire de l'endpoint /api/health
-            └── entity/
-                ├── EntityUnitTest.java                 # Tests unitaires des entités & associations
-                └── JpaEntityMappingTest.java           # Test de conformité du métamodèle JPA
+            ├── entity/
+            │   ├── EntityUnitTest.java                 # Tests unitaires des entités & associations
+            │   └── JpaEntityMappingTest.java           # Test de conformité du métamodèle JPA
+            └── service/
+                ├── AdherentServiceTest.java            # Tests unitaires Mockito AdherentService
+                ├── CoursServiceTest.java               # Tests unitaires Mockito CoursService
+                └── InscriptionServiceTest.java         # Tests unitaires Mockito InscriptionService
 ```
+
+---
+
+## 🧪 Tests Automatisés Disponibles
+
+Les tests sont exécutables via Maven et couvrent l'ensemble des couches implémentées :
+
+- **`AdherentServiceTest`** : vérifie la délégation de `findAll()`, `findById()`, `findByEmail()`, `save()`, `deleteById()` vers `AdherentRepository` avec Mockito ;
+- **`CoursServiceTest`** : vérifie la délégation de `findAll()`, `findById()`, `save()`, `deleteById()` vers `CoursRepository` avec Mockito ;
+- **`InscriptionServiceTest`** : vérifie la délégation de `findAll()`, `findById()`, `findByAdherentId()`, `findByCoursId()`, `existsByAdherentIdAndCoursId()`, `save()`, `deleteById()` vers `InscriptionRepository` avec Mockito ;
+- **`EntityUnitTest`** : intégrité des entités, constructeurs, validations logicielles et relations bidirectionnelles ;
+- **`JpaEntityMappingTest`** : validation du métamodèle JPA et des types de colonnes/tables relationnelles ;
+- **`HealthControllerTest`** : test du contrôleur REST `/api/health` via `MockMvc` ;
+- **`GestionSalleSportApplicationTests`** : test de chargement complet du contexte Spring Boot.
 
 ---
 
@@ -161,15 +214,12 @@ L'application démarre sur le port **8080** : `http://localhost:8080`.
 
 ## 🔮 Éléments réservés aux prochaines phases
 
-1. **Phase 3 — Repositories & Services Métiers** :
-   - Interfaces `JpaRepository` pour `Adherent`, `Cours`, `Inscription` ;
-   - Règles de gestion (capacité maximale, conflits d'horaires, inscriptions valides) ;
-   - DTOs d'entrée et de sortie avec mappers.
-2. **Phase 4 — Contrôleurs REST & Validations** :
+1. **Phase 4 — Contrôleurs REST & DTOs** :
+   - DTOs d'entrée et de sortie avec mappers ;
    - Endpoints CRUD complets avec validation (`@Valid`, Bean Validation) ;
    - Gestion globale des erreurs avec `@RestControllerAdvice`.
-3. **Phase 5 — Pagination, Filtres & Documentation** :
+2. **Phase 5 — Pagination, Filtres & Documentation** :
    - Pagination et tri Spring Data ;
    - Documentation OpenAPI / Swagger.
-4. **Phase 6 — Sécurisation** :
+3. **Phase 6 — Sécurisation** :
    - Authentification et autorisation avec Spring Security & JWT.

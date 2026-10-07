@@ -1,5 +1,5 @@
 /**
  * Couche Logique Métier (Spring Services).
- * Réservé aux phases ultérieures pour les règles de gestion et la logique applicative.
+ * Phase 3 : Services AdherentService, CoursService et InscriptionService avec injection par constructeur.
  */
 package sn.codesamb.gestionsallesport.service;
