@@ -21,3 +21,9 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Environment & Local Secrets
+.env
+*.env
+application-local.properties
+application-dev-local.properties
