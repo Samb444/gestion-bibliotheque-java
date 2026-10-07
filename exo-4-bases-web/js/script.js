@@ -1,24 +1,31 @@
 /**
  * Country Explorer - script.js
- * Phase 3 : Consommation de l'API publique et affichage dynamique
+ * Phase 4 : Recherche et filtre côté client
  *
  * Fonctionnalités implémentées :
- * - Connexion à l'API publique REST Countries
- * - Récupération asynchrone des données avec fetch()
- * - Gestion rigoureuse des états (chargement, succès, erreur, état vide)
- * - Création sécurisée d'éléments DOM (document.createElement, textContent)
- * - Validation des données et gestion des fallbacks (capitales, régions, drapeaux)
- * - Tri initial alphabétique côté client (localeCompare)
- * - Affichage du nombre total de pays chargés
- * - Prévention de la soumission du formulaire de recherche (sans implémenter la recherche)
+ * - Stockage unique en mémoire des données de l'API (allCountries)
+ * - Recherche en temps réel par nom de pays (insensible à la casse, espaces et accents)
+ * - Normalisation Unicode des caractères accentués (normalizeText)
+ * - Filtrage par région via le sélecteur (#region-filter)
+ * - Combinaison logique stricte (Recherche ET Région)
+ * - Mise à jour dynamique du compteur (#results-count) avec gestion du singulier/pluriel
+ * - Gestion distinctive de l'état vide (#empty-state) sans provoquer d'état d'erreur
+ * - Bouton et mécanisme de réinitialisation complète des filtres
+ * - Aucun appel fetch() supplémentaire lors de la recherche ou du filtrage
  */
 
 // Endpoints
 const API_URL = 'https://restcountries.com/v3.1/all?fields=name,capital,region,population,flags,cca2';
 const FALLBACK_API_URL = 'https://gist.githubusercontent.com/ejirocodes/f682b045d23a42f14e232d72ba4ac5e3/raw/countries.json';
 
+// Variable d'état en mémoire : stocke l'ensemble des pays récupérés lors du chargement initial unique
+let allCountries = [];
+
 // Éléments du DOM
 const searchForm = document.getElementById('search-form');
+const searchInput = document.getElementById('country-search') || document.getElementById('search-input');
+const regionFilter = document.getElementById('region-filter');
+const resetButton = document.getElementById('reset-button');
 const countriesContainer = document.getElementById('countries-container');
 const loadingElement = document.getElementById('loading');
 const errorMessageElement = document.getElementById('error-message');
@@ -77,7 +84,13 @@ function setUIState(state, options = {}) {
         countriesContainer.innerHTML = '';
       }
       if (resultsCountElement) {
-        resultsCountElement.textContent = '0 pays disponible';
+        resultsCountElement.textContent = '0 pays trouvé';
+      }
+      if (emptyStateElement) {
+        const textSpan = emptyStateElement.querySelector('span:not(.empty-icon)');
+        if (textSpan) {
+          textSpan.textContent = options.message || 'Aucun pays ne correspond à votre recherche.';
+        }
       }
       break;
 
@@ -218,6 +231,7 @@ function createCountryCard(country) {
 
 /**
  * Trie et affiche la collection de pays dans le conteneur principal.
+ * Met également à jour le compteur de résultats avec gestion singulier/pluriel.
  * @param {Array<Object>} countries
  */
 function renderCountries(countries) {
@@ -246,10 +260,95 @@ function renderCountries(countries) {
 
   countriesContainer.appendChild(fragment);
 
-  // Mise à jour du compteur de pays chargés
+  // Mise à jour du compteur de pays trouvés (gestion singulier/pluriel)
   if (resultsCountElement) {
     resultsCountElement.textContent = `${validCardsCount} ${validCardsCount > 1 ? 'pays trouvés' : 'pays trouvé'}`;
   }
+}
+
+/**
+ * Normalise une chaîne de caractères :
+ * - supprime les accents et signes diacritiques (décomposition Unicode NFD)
+ * - convertit en minuscules
+ * - supprime les espaces superflus aux extrémités
+ * @param {string} value
+ * @returns {string}
+ */
+function normalizeText(value) {
+  if (typeof value !== 'string') {
+    return '';
+  }
+  return value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLocaleLowerCase('fr-FR')
+    .trim();
+}
+
+/**
+ * Filtre le tableau en mémoire allCountries en combinant la recherche par nom et le filtre régional.
+ * Ne modifie jamais le tableau source.
+ * Logique stricte : Recherche ET Région.
+ * @returns {Array<Object>} Tableau des pays correspondant aux critères
+ */
+function filterCountries() {
+  const searchTerm = searchInput ? searchInput.value : '';
+  const selectedRegion = regionFilter ? regionFilter.value.trim() : '';
+
+  const normalizedSearch = normalizeText(searchTerm);
+
+  return allCountries.filter((country) => {
+    // 1. Recherche par nom (sur name.common, complété par name.official)
+    const commonName = country?.name?.common || '';
+    const officialName = country?.name?.official || '';
+
+    const normalizedCommon = normalizeText(commonName);
+    const normalizedOfficial = normalizeText(officialName);
+
+    const matchesSearch = !normalizedSearch
+      || normalizedCommon.includes(normalizedSearch)
+      || normalizedOfficial.includes(normalizedSearch);
+
+    // 2. Filtre par région (comparaison insensible à la casse)
+    const countryRegion = country?.region ? country.region.trim() : '';
+    const matchesRegion = !selectedRegion
+      || (countryRegion.toLowerCase() === selectedRegion.toLowerCase());
+
+    // Combinaison logique ET
+    return matchesSearch && matchesRegion;
+  });
+}
+
+/**
+ * Applique les filtres en cours et orchestre la mise à jour de l'UI.
+ * Bascule vers l'état 'empty' si aucun pays ne correspond aux critères.
+ */
+function applyFilters() {
+  const filtered = filterCountries();
+
+  if (filtered.length === 0) {
+    setUIState('empty', {
+      message: 'Aucun pays ne correspond à votre recherche.'
+    });
+  } else {
+    setUIState('success');
+    renderCountries(filtered);
+  }
+}
+
+/**
+ * Réinitialise la recherche et le filtre régional à leur valeur par défaut,
+ * puis réaffiche l'intégralité des pays chargés en mémoire.
+ */
+function resetFilters() {
+  if (searchInput) {
+    searchInput.value = '';
+  }
+  if (regionFilter) {
+    regionFilter.value = '';
+  }
+  applyFilters();
+  searchInput?.focus();
 }
 
 /**
@@ -275,7 +374,7 @@ async function fetchFallbackCountries() {
 }
 
 /**
- * Récupère les pays depuis l'API et orchestre l'affichage et les états.
+ * Récupère les pays depuis l'API (une seule fois au chargement) et initialise l'application.
  */
 async function fetchCountries() {
   setUIState('loading');
@@ -303,15 +402,19 @@ async function fetchCountries() {
       throw new Error("Les données reçues ne sont pas au format attendu (tableau de pays).");
     }
 
-    // Gestion du tableau vide (Section 12)
-    if (countries.length === 0) {
-      setUIState('empty');
+    // Stockage en mémoire pour le filtrage côté client ultérieur
+    allCountries = countries;
+
+    // Gestion du tableau vide (Section 12 Phase 3)
+    if (allCountries.length === 0) {
+      setUIState('empty', {
+        message: 'Aucun pays disponible.'
+      });
       return;
     }
 
-    // Succès : affichage dynamique et mise à jour de l'UI
-    renderCountries(countries);
-    setUIState('success');
+    // Affichage initial en appliquant les filtres (par défaut : 250 pays)
+    applyFilters();
   } catch (error) {
     console.error('Erreur technique lors de la récupération des pays :', error);
     setUIState('error', {
@@ -322,10 +425,25 @@ async function fetchCountries() {
 
 // Initialisation au chargement du DOM
 document.addEventListener('DOMContentLoaded', () => {
-  // Empêche la soumission native du formulaire sans déclencher de recherche à cette phase
+  // Événements de recherche en temps réel et de sélection de région
+  if (searchInput) {
+    searchInput.addEventListener('input', applyFilters);
+    searchInput.addEventListener('search', applyFilters);
+  }
+
+  if (regionFilter) {
+    regionFilter.addEventListener('change', applyFilters);
+  }
+
+  if (resetButton) {
+    resetButton.addEventListener('click', resetFilters);
+  }
+
+  // Empêche la soumission native du formulaire et applique le filtrage en mémoire
   if (searchForm) {
     searchForm.addEventListener('submit', (event) => {
       event.preventDefault();
+      applyFilters();
     });
   }
 

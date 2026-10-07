@@ -203,6 +203,11 @@ body {
   gap: 0.625rem;
 }
 
+.search-input-wrapper .form-input {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .form-input,
 .form-select {
   width: 100%;
@@ -266,6 +271,26 @@ body {
 
 .btn-primary:active {
   background-color: var(--color-primary-active);
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary {
+  background-color: #f1f5f9;
+  color: var(--color-text-main);
+  border: 1.5px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  background-color: #e2e8f0;
+  border-color: var(--color-border-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary:active {
+  background-color: #cbd5e1;
   transform: translateY(0);
   box-shadow: var(--shadow-sm);
 }

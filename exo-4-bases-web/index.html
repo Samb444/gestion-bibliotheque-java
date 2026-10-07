@@ -23,15 +23,15 @@
           <p id="results-count" class="results-count" aria-live="polite"></p>
         </div>
 
-        <!-- Zone de recherche et de filtres (visuelle, non connectée en Phase 2) -->
+        <!-- Zone de recherche et de filtres (connectée en Phase 4) -->
         <div class="controls-container">
           <form id="search-form" class="search-form" role="search">
             <div class="form-group search-group">
-              <label for="search-input" class="form-label">Rechercher un pays :</label>
+              <label for="country-search" class="form-label">Rechercher un pays :</label>
               <div class="search-input-wrapper">
                 <input
                   type="search"
-                  id="search-input"
+                  id="country-search"
                   name="search"
                   class="form-input"
                   placeholder="Ex: France, Sénégal, Japon..."
@@ -39,6 +39,9 @@
                 >
                 <button type="submit" id="search-button" class="btn btn-primary">
                   Rechercher
+                </button>
+                <button type="button" id="reset-button" class="btn btn-secondary">
+                  Réinitialiser
                 </button>
               </div>
             </div>
@@ -52,6 +55,7 @@
                 <option value="Asia">Asie</option>
                 <option value="Europe">Europe</option>
                 <option value="Oceania">Océanie</option>
+                <option value="Antarctic">Antarctique</option>
               </select>
             </div>
           </form>
@@ -72,7 +76,7 @@
         <!-- Zone d'état : Aucun résultat (masquée par défaut, gérée en JS) -->
         <div id="empty-state" class="status-box empty-box hidden" role="status" aria-live="polite">
           <span class="empty-icon" aria-hidden="true">🔍</span>
-          <span>Aucun pays disponible.</span>
+          <span>Aucun pays ne correspond à votre recherche.</span>
         </div>
 
         <!-- Zone d'affichage des résultats -->
