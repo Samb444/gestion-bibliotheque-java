@@ -4,15 +4,16 @@ Projet pédagogique d'initiation à **Spring Boot 3** et aux architectures d'API
 
 ---
 
-## 📌 État d'avancement : Phase 1 (Initialisation Technique)
+## 📌 État d'avancement : Phase 2 (Modélisation du Domaine & Entités JPA)
 
-Cette première étape pose les fondations techniques du projet :
-- Structure Maven standard et déclarations de dépendances ;
-- Configuration de l'environnement d'exécution et de la connexion MySQL sécurisée ;
-- Découpage modulaire de l'architecture en packages ;
-- Mise en place d'un endpoint technique de vérification (`/api/health`).
+Cette étape met en place les entités JPA fondamentales, leurs contraintes, leurs énumérations et leurs associations relationnelles :
+- Création des entités persistantes : `Adherent`, `Cours`, `Inscription` ;
+- Énumérations associées : `TypeCours` et `StatutPresence` (mappées en `EnumType.STRING`) ;
+- Relations JPA bidirectionnelles avec méthodes d'assistance et protection contre les boucles infinies ;
+- Tests unitaires des entités et tests d'intégration du métamodèle JPA (`Metamodel`) ;
+- Endpoint technique de vérification (`/api/health`) maintenu opérationnel.
 
-> **Important** : Le domaine métier (entités JPA, repositories, services, contrôleurs CRUD, DTOs, validations et sécurité JWT) sera développé dans les phases suivantes.
+> **Important (Périmètre Phase 2)** : Conformément aux consignes pédagogiques, les Repositories Spring Data, DTOs, Mappers, Services métiers, Contrôleurs CRUD, validations `@Valid` et sécurité JWT seront intégrés dans les phases ultérieures. Aucun script DDL automatique n'altère la base de données (`spring.jpa.hibernate.ddl-auto=none`).
 
 ---
 
@@ -24,8 +25,55 @@ Cette première étape pose les fondations techniques du projet :
 | **Spring Boot** | 3.3.4 | Framework applicatif backend |
 | **Maven** | 3.9+ | Outil de build et gestion des dépendances |
 | **MySQL / MariaDB** | 8.x / 10.4+ | Système de gestion de base de données relationnelle |
-| **Spring Data JPA** | Inclus dans starter | Couche ORM et persistance (Hibernate) |
+| **Spring Data JPA** | Inclus dans starter | Couche ORM et persistance (Hibernate 6) |
 | **Spring Validation** | Inclus dans starter | Validation des données (Bean Validation) |
+
+---
+
+## 🏛️ Modélisation du Domaine (Entités & Relations JPA)
+
+### 1. Entité `Adherent` (Table `adherents`)
+Représente un membre de la salle de sport.
+- **Attributs & Contraintes JPA** :
+  - `id` (`Long`) : Identifiant technique primaire (`@GeneratedValue(strategy = GenerationType.IDENTITY)`) ;
+  - `nom` (`String`) : Non null (`@Column(nullable = false, length = 100)`) ;
+  - `prenom` (`String`) : Non null (`@Column(nullable = false, length = 100)`) ;
+  - `email` (`String`) : Non null et unique (`@Column(nullable = false, unique = true, length = 150)`) ;
+  - `telephone` (`String`) : Non null (`@Column(nullable = false, length = 20)`) ;
+  - `dateNaissance` (`LocalDate`) : Date de naissance via l'API `java.time` (`@Column(name = "date_naissance")`).
+- **Association** :
+  - `inscriptions` (`List<Inscription>`) : `@OneToMany(mappedBy = "adherent")` avec cascade et gestion d'orphelins.
+
+### 2. Entité `Cours` (Table `cours`)
+Représente une séance d'entraînement collective.
+- **Attributs & Contraintes JPA** :
+  - `id` (`Long`) : Clé primaire auto-générée (`IDENTITY`) ;
+  - `nom` (`String`) : Intitulé du cours, non null (`@Column(nullable = false, length = 100)`) ;
+  - `type` (`TypeCours`) : Enum stocké au format chaîne (`@Enumerated(EnumType.STRING)`) ;
+  - `capacite` (`Integer`) : Capacité d'accueil positive (`@Column(nullable = false)` avec validation logicielle `capacite > 0`) ;
+  - `dateHeure` (`LocalDateTime`) : Date et heure de début (`@Column(name = "date_heure", nullable = false)`) ;
+  - `salle` (`String`) : Salle de pratique, non null (`@Column(nullable = false, length = 50)`).
+- **Association** :
+  - `inscriptions` (`List<Inscription>`) : `@OneToMany(mappedBy = "cours")` avec cascade et gestion d'orphelins.
+
+### 3. Entité `Inscription` (Table `inscriptions`)
+Représente la participation d'un adhérent à un cours spécifique.
+- **Attributs & Contraintes JPA** :
+  - `id` (`Long`) : Clé primaire auto-générée (`IDENTITY`) ;
+  - `dateInscription` (`LocalDateTime`) : Horodatage d'enregistrement (`@Column(name = "date_inscription", nullable = false)`) ;
+  - `presence` (`StatutPresence`) : Statut de présence stocké en texte (`@Enumerated(EnumType.STRING)`), valeur par défaut `ABSENT`.
+- **Associations obligatoires** :
+  - `adherent` (`Adherent`) : `@ManyToOne(fetch = FetchType.LAZY, optional = false)` avec `@JoinColumn(name = "adherent_id", nullable = false)` ;
+  - `cours` (`Cours`) : `@ManyToOne(fetch = FetchType.LAZY, optional = false)` avec `@JoinColumn(name = "cours_id", nullable = false)`.
+
+### 4. Énumérations
+- **`TypeCours`** : `YOGA`, `CARDIO`, `MUSCULATION`, `HIIT`, `CIRCUIT`.
+- **`StatutPresence`** : `PRESENT`, `ABSENT`.
+
+### 5. Bonnes pratiques appliquées
+- **Pas de Lombok (`@Data`)** : Contrôle explicite des constructeurs, getters, setters et méthodes d'assistance bidirectionnelles (`addInscription`, `removeInscription`).
+- **Prévention des boucles infinies** : Exclusion stricte des collections (`inscriptions`) et associations inverses des méthodes `toString()`, `equals()` et `hashCode()`.
+- **Typage moderne `java.time`** : Utilisation exclusive de `LocalDate` et `LocalDateTime`.
 
 ---
 
@@ -33,30 +81,19 @@ Cette première étape pose les fondations techniques du projet :
 
 Le fichier de configuration est situé dans [`src/main/resources/application.properties`](src/main/resources/application.properties).
 
-### Principes de sécurité appliqués :
-- **Aucun mot de passe ni identifiant secret n'est écrit en dur dans le code ou suivi par Git.**
-- Des variables d'environnement sont utilisées avec des valeurs par défaut adaptées au développement local (XAMPP / Wamp / MariaDB).
+### Principes appliqués :
+- **Sécurité** : Aucun mot de passe ni identifiant secret n'est écrit en dur dans le code ou suivi par Git.
+- **Variables configurables** : `DB_HOST` (défaut : `localhost`), `DB_PORT` (`3306`), `DB_NAME` (`salle_sport`), `DB_USER` (`root`), `DB_PASSWORD` (`""`).
+- **Intégrité BDD** : `spring.jpa.hibernate.ddl-auto=none` pour interdire toute modification automatique du schéma existant par Hibernate.
 
-### Variables configurables :
-| Variable | Description | Valeur par défaut locale |
-| :--- | :--- | :--- |
-| `DB_HOST` | Hôte du serveur MySQL | `localhost` |
-| `DB_PORT` | Port d'écoute MySQL | `3306` |
-| `DB_NAME` | Nom de la base de données | `salle_sport` |
-| `DB_USER` | Utilisateur de connexion | `root` |
-| `DB_PASSWORD` | Mot de passe associé | *(vide en local XAMPP)* |
-
-### Démarrage préalable de MySQL :
-Avant de lancer l'application, assurez-vous que votre serveur MySQL est démarré et que la base de données existe :
 ```sql
+-- Création préalable de la base si nécessaire :
 CREATE DATABASE IF NOT EXISTS salle_sport CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
 ---
 
 ## 📂 Architecture des Packages
-
-Le projet adopte une séparation nette des responsabilités :
 
 ```text
 gestion-salle-sport-api/
@@ -65,27 +102,30 @@ gestion-salle-sport-api/
 └── src/
     ├── main/
     │   ├── java/sn/codesamb/gestionsallesport/
-    │   │   ├── controller/      # Contrôleurs REST (HealthController en Phase 1)
+    │   │   ├── controller/      # Contrôleurs REST (HealthController)
+    │   │   ├── entity/          # Entités JPA : Adherent, Cours, Inscription, Enums (Phase 2)
     │   │   ├── service/         # Logique métier et règles de gestion (Phase 3+)
-    │   │   ├── repository/      # Interfaces Spring Data JPA d'accès aux données (Phase 2+)
+    │   │   ├── repository/      # Interfaces Spring Data JPA d'accès aux données (Phase 3+)
     │   │   ├── dto/             # Data Transfer Objects requêtes/réponses (Phase 3+)
-    │   │   ├── entity/          # Entités persistantes JPA (Phase 2)
     │   │   ├── exception/       # Exceptions métier et gestionnaire global (Phase 3+)
-    │   │   └── GestionSalleSportApplication.java  # Classe principale (main)
+    │   │   └── GestionSalleSportApplication.java  # Point d'entrée principal
     │   └── resources/
     │       └── application.properties             # Configuration Spring Boot & MySQL
     └── test/
         └── java/sn/codesamb/gestionsallesport/
             ├── GestionSalleSportApplicationTests.java  # Test de chargement de contexte
-            └── controller/
-                └── HealthControllerTest.java           # Test unitaire de l'endpoint /api/health
+            ├── controller/
+            │   └── HealthControllerTest.java           # Test unitaire de l'endpoint /api/health
+            └── entity/
+                ├── EntityUnitTest.java                 # Tests unitaires des entités & associations
+                └── JpaEntityMappingTest.java           # Test de conformité du métamodèle JPA
 ```
 
 ---
 
 ## 🚀 Compilation et Lancement
 
-### 1. Cloner ou se placer dans le répertoire du projet
+### 1. Se placer dans le répertoire du projet
 ```powershell
 cd gestion-salle-sport-api
 ```
@@ -106,8 +146,6 @@ L'application démarre sur le port **8080** : `http://localhost:8080`.
 
 ## 🩺 Endpoint de Vérification Technique (Health Check)
 
-Un endpoint de test a été créé pour valider que l'API est opérationnelle :
-
 - **Méthode** : `GET`
 - **URL** : `http://localhost:8080/api/health`
 - **En-tête Accept** : `application/json`
@@ -119,29 +157,19 @@ Un endpoint de test a été créé pour valider que l'API est opérationnelle :
 }
 ```
 
-### Test rapide via cURL ou PowerShell :
-```powershell
-curl http://localhost:8080/api/health
-# ou via PowerShell :
-Invoke-RestMethod -Uri http://localhost:8080/api/health
-```
-
 ---
 
 ## 🔮 Éléments réservés aux prochaines phases
 
-Les fonctionnalités suivantes feront l'objet des phases ultérieures :
-1. **Phase 2 — Modélisation du Domaine (Entités JPA & Repositories)** :
-   - `Adherent`, `Coach`, `Cours`, `Abonnement`, `Inscription`, `Paiement` ;
-   - Relations JPA (`@OneToMany`, `@ManyToOne`, etc.) ;
-2. **Phase 3 — DTOs, Mappings & Services Métiers** :
-   - Règles de gestion (inscriptions valides, abonnements actifs) ;
-   - DTOs d'entrée et de sortie ;
-3. **Phase 4 — Contrôleurs REST & Validations** :
-   - CRUD complets avec validation (`@Valid`, Bean Validation) ;
-   - Gestion globale des erreurs avec `@RestControllerAdvice` ;
-4. **Phase 5 — Pagination, Filtres & Documentation** :
+1. **Phase 3 — Repositories & Services Métiers** :
+   - Interfaces `JpaRepository` pour `Adherent`, `Cours`, `Inscription` ;
+   - Règles de gestion (capacité maximale, conflits d'horaires, inscriptions valides) ;
+   - DTOs d'entrée et de sortie avec mappers.
+2. **Phase 4 — Contrôleurs REST & Validations** :
+   - Endpoints CRUD complets avec validation (`@Valid`, Bean Validation) ;
+   - Gestion globale des erreurs avec `@RestControllerAdvice`.
+3. **Phase 5 — Pagination, Filtres & Documentation** :
    - Pagination et tri Spring Data ;
-   - Documentation OpenAPI / Swagger ;
-5. **Phase 6 — Sécurisation** :
+   - Documentation OpenAPI / Swagger.
+4. **Phase 6 — Sécurisation** :
    - Authentification et autorisation avec Spring Security & JWT.

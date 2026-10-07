@@ -1,5 +1,5 @@
 /**
  * Couche Entités JPA (Mappage objet-relationnel).
- * Réservé aux phases ultérieures (Adherent, Coach, Cours, Abonnement, Inscription, Paiement).
+ * Phase 2 : Entités fondamentales Adherent, Cours, Inscription et leurs énumérations associées.
  */
 package sn.codesamb.gestionsallesport.entity;
